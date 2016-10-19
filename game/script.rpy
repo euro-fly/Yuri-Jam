@@ -4,15 +4,22 @@
 # eg. image eileen happy = "eileen_happy.png"
 
 # Declare characters used by this game.
-define e = Character('Eileen', color="#c8ffc8")
+define s = Character('Stray', color="#c8ffc8")
+
+define k = Character('Kitsune', color="#c8f4ff")
 
 image phone = "images/phone/bustedphone.png"
 image bg wasteland = "images/wasteland.jpg"
+image bg wip = "images/bg/bg wip.png"
 
 image eileen normal = "images/sylvie_normal.png"
 image eileen giggle = "images/sylvie_giggle.png"
 image eileen smile = "images/sylvie_smile.png"
 image eileen surprised = "images/sylvie_surprised.png"
+
+image stray normal = "images/sprites/body-sprite-1.png"
+
+image kitsune giggle = "images/sprites/kitsune-phone.png"
 
 
 
@@ -52,24 +59,30 @@ transform incoming_message:
 # The game starts here.
 label start:
     
-    scene bg wasteland
+    scene bg wip
     with fade
     
-    show eileen normal
+    show stray normal
     with dissolve
-
-    e "Time to check out my phone!"
+    
+    s "Time to check out my phone!"
+    
+    show kitsune giggle at right
+    with dissolve
+    
+    k "{i}You'll have to hang up first to do that, though...{/i}"
     
     window hide
+    hide kitsune 
     
     ## Add cellphone screen here
     show phone at phone_pickup
 
     $ renpy.pause(0.5)
-    show screen phone_message_other("mom", "this is me testing out text messaging!")
+    show screen phone_message_other("kitsune", "this is me testing out text messaging!")
     $ renpy.pause()
     hide screen phone_message_other
-    show screen phone_sticker_other("ritsu")
+    show screen phone_sticker_other("kitsune", "ritsu")
     $ renpy.pause(0.5)
     call screen phone_reply("what??","nobreakfast","ew, anime","nobreakfast")
     
@@ -77,19 +90,19 @@ label start:
     hide screen phone_sticker_other
     
     $ renpy.pause(0.5)
-    show screen phone_message_me("Me", "will you")
+    show screen phone_message_me("will you")
     $ renpy.pause(0.5)
     hide screen phone_message_me
-    show screen phone_message_me("Me", "stop")
+    show screen phone_message_me("stop")
     $ renpy.pause(0.5)
     hide screen phone_message_me
-    show screen phone_message_me("Me", "sending me these GODDAMN stickers")
+    show screen phone_message_me("sending me these GODDAMN stickers")
     $ renpy.pause()
 
     hide screen phone_message_me
     $ renpy.pause(0.1)
 
-    show screen phone_message_other("mom", "ok")
+    show screen phone_message_other("ohms", "ok")
     $ renpy.pause()
 
     hide screen phone_message_other
@@ -105,5 +118,5 @@ label start:
 label continues:
     
     window show
-    e "My mom is great."
+    s "My mom is great."
     return

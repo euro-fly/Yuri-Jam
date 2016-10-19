@@ -10,7 +10,7 @@ init offset = -1
 ################################################################################
 
 style default:
-    font "Avenir Next LT Pro Regular.otf"
+    font "fonts/Avenir Next LT Pro Regular.otf"
     size gui.text_size
     color gui.text_color
 
@@ -150,7 +150,7 @@ style namebox:
 
 style say_label:
     color gui.accent_color
-    font "Avenir Next LT Pro Bold.otf"
+    font "fonts/Avenir Next LT Pro Bold.otf"
     size gui.name_text_size
     xalign gui.name_xalign
     yoffset 10
@@ -1527,7 +1527,6 @@ init:
 screen phone_message_other(who, what):
     vbox at incoming_message:
         style_group "phone_message"
-
         add "images/phone/bubble-tip.png" at phone_message_bubble_tip
 
         frame:
@@ -1535,25 +1534,31 @@ screen phone_message_other(who, what):
             xsize 200
             vbox:
                 style "phone_message_contents"
-                add "images/avi/dino.gif"
+                if who == "ohms":
+                    add "images/avi/ohms_icon.png"
+                if who == "kitsune":
+                    add "images/avi/kitsune_icon.png"
+                    
                 text what style "phone_message_what_other"
 
-screen phone_sticker_other(what):
+screen phone_sticker_other(who, what):
     vbox at incoming_message:
         style_group "phone_message"
-
         add "images/phone/bubble-tip.png" at phone_message_bubble_tip
-
         frame:
             style_group "phone_message"
             xsize 145
             vbox:
                 style "phone_message_contents"
+                if who == "ohms":
+                    add "images/avi/ohms_icon.png"
+                if who == "kitsune":
+                    add "images/avi/kitsune_icon.png"
                 if what == "ritsu":
                     add "images/stickers/placeholder.jpg"
 
 
-screen phone_message_me(who, what):
+screen phone_message_me(what):
     vbox at incoming_message:
         style_group "phone_message"
         xoffset -490
@@ -1568,7 +1573,7 @@ screen phone_message_me(who, what):
             xsize 200
             vbox:
                 style "phone_message_contents"
-                add "images/avi/lizard.gif"
+                add "images/avi/stray_icon.png"
                 text what style "phone_message_what_me"
 screen phone_reply(reply1, label1, reply2, label2):
     modal True

@@ -1,110 +1,50 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-Exception: Could not find font 'tl/japanese/MTLc3m.ttf'.
+  File "game/script.rpy", line 76, in script
+    $ renpy.pause(0.5)
+  File "game/script.rpy", line 76, in <module>
+    $ renpy.pause(0.5)
+Exception: Required parameter what has no value.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
+  File "game/script.rpy", line 76, in script
+    $ renpy.pause(0.5)
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 805, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\python.py", line 1641, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "renpy/common/_layout/screen_main_menu.rpym", line 30, in <module>
-    ui.interact()
+  File "game/script.rpy", line 76, in <module>
+    $ renpy.pause(0.5)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\exports.py", line 1267, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\ui.py", line 278, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2496, in interact
     repeat, rv = self.interact_core(preloads=preloads, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2850, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 1916, in draw_screen
-    renpy.config.screen_height,
-  File "renpy/display/render.pyx", line 416, in renpy.display.render.render_screen (gen\renpy.display.render.c:6685)
-    rv = render(root, width, height, 0, 0)
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
-    surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
-    surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
-    surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 618, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
-    surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 403, in render
-    renders = [ render(i, renwidth, renheight, st, at) for i in children ]
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 862, in render
-    surf = render(d, width - x, rh, cst, cat)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 1046, in render
-    st, at)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 862, in render
-    surf = render(d, width - x, rh, cst, cat)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\behavior.py", line 686, in render
-    rv = super(Button, self).render(width, height, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 1019, in render
-    xminimum = max(xminimum, size_groups[size_group].width(width, height, st, at))
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 965, in width
-    rend = i.render(width, height, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\behavior.py", line 686, in render
-    rv = super(Button, self).render(width, height, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\layout.py", line 1046, in render
-    st, at)
-  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\text\text.py", line 1719, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\text\text.py", line 575, in __init__
-    glyphs = ts.glyphs(s, self)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\text\text.py", line 239, in glyphs
-    fo = font.get_font(self.font, self.size, self.bold, self.italic, 0, self.antialias, self.vertical, self.hinting, layout.oversample)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\text\font.py", line 646, in get_font
-    face = load_face(fn)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\text\font.py", line 589, in load_face
-    raise Exception("Could not find font {0!r}.".format(orig_fn))
-Exception: Could not find font 'tl/japanese/MTLc3m.ttf'.
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2764, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 464, in visit_all
+    d.visit_all(callback)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 464, in visit_all
+    d.visit_all(callback)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 464, in visit_all
+    d.visit_all(callback)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 394, in visit_all
+    callback(self)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2764, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 404, in per_interact
+    self.update()
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 573, in update
+    self.screen.function(**self.scope)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 148, in apply_arguments
+    return parameters.apply(args, kwargs, ignore_errors)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 117, in apply
+    raise Exception("Required parameter %s has no value." % name)
+Exception: Required parameter what has no value.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.11.1749
