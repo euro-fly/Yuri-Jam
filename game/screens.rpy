@@ -1528,15 +1528,14 @@ screen phone_message_other(who, what):
     vbox at incoming_message:
         style_group "phone_message"
         add "images/phone/bubble-tip.png" at phone_message_bubble_tip
-
         frame:
             style_group "phone_message"
             xsize 200
             vbox:
                 style "phone_message_contents"
-                if who == "ohms":
+                if who == "Ohms":
                     add "images/avi/ohms_icon.png"
-                if who == "kitsune":
+                if who == "Kitsune":
                     add "images/avi/kitsune_icon.png"
                     
                 text what style "phone_message_what_other"
@@ -1556,17 +1555,29 @@ screen phone_sticker_other(who, what):
                     add "images/avi/kitsune_icon.png"
                 if what == "ritsu":
                     add "images/stickers/placeholder.jpg"
-
+                if what == "chips":
+                    add "images/stickers/chips.png"
+                    
+screen phone_message_system(what):
+    vbox at incoming_message:
+        style_group "phone_message"
+        xoffset -515
+        xalign 1.0
+        frame:
+            style_group "phone_message"
+            background Solid("#bbbbbb")
+            xsize 200
+            vbox:
+                style "phone_message_contents"
+                text what style "phone_message_what_me"
 
 screen phone_message_me(what):
     vbox at incoming_message:
         style_group "phone_message"
         xoffset -490
-
         xalign 1.0
-
         add "images/phone/bubble-tip2.png" at phone_message_bubble_tip2
-
+        
         frame:
             style_group "phone_message2"
             background Solid("#13a32d")
@@ -1575,11 +1586,14 @@ screen phone_message_me(what):
                 style "phone_message_contents"
                 add "images/avi/stray_icon.png"
                 text what style "phone_message_what_me"
-screen phone_reply(reply1, label1, reply2, label2):
+                
+                
+screen phone_reply(reply1, label1, reply2 = "", label2= ""):
     modal True
     vbox:
         xalign 0.54
         yalign 0.999
         spacing 5
         textbutton "[reply1]" action Jump(label1) style "phone_reply"
-        textbutton "[reply2]" action Jump(label2) style "phone_reply"
+        if (reply2 != "" and label2 != ""):
+            textbutton "[reply2]" action Jump(label2) style "phone_reply"
