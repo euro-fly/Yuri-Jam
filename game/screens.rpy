@@ -1557,6 +1557,8 @@ screen phone_sticker_other(who, what):
                     add "images/stickers/placeholder.jpg"
                 if what == "chips":
                     add "images/stickers/chips.png"
+                if what == "jazz":
+                    add "images/stickers/jazz.png"
                     
 screen phone_message_system(what):
     vbox at incoming_message:

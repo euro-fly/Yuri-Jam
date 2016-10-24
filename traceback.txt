@@ -1,54 +1,46 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 134, in script
-    call screen phone_reply("!todaystatus","notajump")
-  File "renpy/common/000statements.rpy", line 471, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/screens.rpy", line 1589, in <module>
-    screen phone_reply(reply1, label1, reply2= null, label2= null):
-NameError: name 'null' is not defined
+  File "game/script.rpy", line 85, in script
+    s "Time to check out my phone!"
+Exception: Unknown keyword arguments: two_window
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 134, in script
-    call screen phone_reply("!todaystatus","notajump")
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 1696, in execute
-    self.call("execute")
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 1714, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\statements.py", line 144, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 471, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\exports.py", line 2496, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ui.py", line 278, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2508, in interact
-    scene_lists.replace_transient()
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 795, in replace_transient
-    self.remove(layer, tag)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 1082, in remove
-    self.hide_or_replace(layer, remove_index, "hide")
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 1006, in hide_or_replace
-    d = oldsle.displayable._hide(now - st, now - at, prefix)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 438, in _hide
-    self.update()
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\bootstrap.py", line 277, in bootstrap
+    renpy.main.main()
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\main.py", line 478, in main
+    run(restart)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\main.py", line 144, in run
+    renpy.execution.run_context(True)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\execution.py", line 734, in run_context
+    context.run()
+  File "game/script.rpy", line 85, in script
+    s "Time to check out my phone!"
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 603, in execute
+    renpy.exports.say(who, what, interact=self.interact)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\exports.py", line 1135, in say
+    who(what, interact=interact)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\character.py", line 873, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\character.py", line 719, in do_display
+    **display_args)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\character.py", line 484, in display_say
+    what_text = show_function(who, what_string)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\character.py", line 702, in do_show
+    **self.show_args)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\character.py", line 282, in show_display_say
+    return renpy.display.screen.get_widget(screen, "what", layer)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 1176, in get_widget
+    screen.update()
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 573, in update
     self.screen.function(**self.scope)
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 148, in apply_arguments
     return parameters.apply(args, kwargs, ignore_errors)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 119, in apply
-    rv[name] = renpy.python.py_eval(default)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\python.py", line 1670, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\python.py", line 1665, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/screens.rpy", line 1589, in <module>
-    screen phone_reply(reply1, label1, reply2= null, label2= null):
-NameError: name 'null' is not defined
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 136, in apply
+    raise Exception("Unknown keyword arguments: %s" % ( ", ".join(values.keys())))
+Exception: Unknown keyword arguments: two_window
 
 Windows-8-6.2.9200
 Ren'Py 6.99.11.1749

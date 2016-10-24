@@ -17,9 +17,19 @@ image eileen giggle = "images/sylvie_giggle.png"
 image eileen smile = "images/sylvie_smile.png"
 image eileen surprised = "images/sylvie_surprised.png"
 
-image stray normal = "images/sprites/Stray - Neutral.png"
+image stray normal = "images/sprites/stra-default.png"
+image stray upset = "images/sprites/stra-upset.png"
+image stray embarrassed = "images/sprites/stra-emba.png"
+image stray frown = "images/sprites/stra-frown.png"
+image stray talk = "images/sprites/stra-open-default.png"
+image stray blush = "images/sprites/stra-smileblsh.png"
+image stray smile = "images/sprites/stra-smilepng.png"
 
-image kitsune giggle = "images/sprites/phone.gif"
+image kitsune normal = "images/sprites/kit_default_phone.png"
+image kitsune baited = "images/sprites/kit_baited_phone.png"
+image kitsune smile = "images/sprites/kit_smile_phone.png"
+image kitsune smug = "images/sprites/kit_smug_phone.png"
+image kitsune talk = "images/sprites/kit_talk_phone.png"
 
 
 
@@ -69,13 +79,19 @@ label start:
     scene bg wip
     with fade
     
-    show stray normal at midleft
+    show stray upset at midleft
     with dissolve
     
     s "Time to check out my phone!"
     
-    show kitsune giggle at midright
+    show kitsune smile at midright
     with dissolve
+    
+    k "{i}Okay!{/i}"
+    
+    $ renpy.pause(0.5)
+    
+    show kitsune smug with dissolve
     
     k "{i}You'll have to hang up first to do that, though...{/i}"
     
@@ -84,7 +100,7 @@ label start:
     
     $ renpy.pause(0.5)
     
-    show stray normal at left
+    show stray normal at right
     with move
     
     ## Add cellphone screen here
@@ -109,7 +125,7 @@ label start:
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
     show screen phone_message_me("Hey")
-    $ renpy.pause(0.5)
+    $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
     show screen phone_message_me("How's it going?")
@@ -233,6 +249,10 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "which is always nice")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
     show screen phone_message_other("Kitsune", "and... a ton of those CDs you'd probably like i think")
     $ renpy.pause()
     hide screen phone_message_other
@@ -245,9 +265,13 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "that's your thing, right")
+    show screen phone_message_other("Kitsune", "at least i think it's jazz.")
     $ renpy.pause()
     hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_sticker_other("Kitsune", "jazz")
+    $ renpy.pause()
+    hide screen phone_sticker_other
     play sound "sfx/blop.mp3"
     show screen phone_message_other("Kitsune", "like, we've got... one of em was by Miles something or other.")
     $ renpy.pause()
