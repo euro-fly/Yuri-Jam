@@ -1510,7 +1510,7 @@ init:
     style phone_message_what_other is phone_message:
         color "#000000"
         size 18
-        
+
     style phone_message_what_me is phone_message:
         color "#FFFFFF"
         size 18
@@ -1537,7 +1537,7 @@ screen phone_message_other(who, what):
                     add "images/avi/ohms_icon.png"
                 if who == "Kitsune":
                     add "images/avi/kitsune_icon.png"
-                    
+
                 text what style "phone_message_what_other"
 
 screen phone_sticker_other(who, what):
@@ -1553,13 +1553,26 @@ screen phone_sticker_other(who, what):
                     add "images/avi/ohms_icon.png"
                 if who == "kitsune":
                     add "images/avi/kitsune_icon.png"
-                if what == "ritsu":
-                    add "images/stickers/placeholder.jpg"
-                if what == "chips":
-                    add "images/stickers/chips.png"
-                if what == "jazz":
-                    add "images/stickers/jazz.png"
-                    
+                if what != "":
+                    add "images/stickers/" + what + ".png"
+
+screen phone_sticker_me(what):
+    vbox at incoming_message:
+        style_group "phone_message"
+        xoffset -445
+        xalign 1.0
+        add "images/phone/bubble-tip2.png" at phone_message_bubble_tip3
+
+        frame:
+            style_group "phone_message2"
+            background Solid("#13a32d")
+            xsize 145
+            vbox:
+                style "phone_message_contents"
+                add "images/avi/stray_icon.png"
+                if what != "":
+                    add "images/stickers/" + what + ".png"
+
 screen phone_message_system(what):
     vbox at incoming_message:
         style_group "phone_message"
@@ -1579,7 +1592,7 @@ screen phone_message_me(what):
         xoffset -490
         xalign 1.0
         add "images/phone/bubble-tip2.png" at phone_message_bubble_tip2
-        
+
         frame:
             style_group "phone_message2"
             background Solid("#13a32d")
@@ -1588,8 +1601,8 @@ screen phone_message_me(what):
                 style "phone_message_contents"
                 add "images/avi/stray_icon.png"
                 text what style "phone_message_what_me"
-                
-                
+
+
 screen phone_reply(reply1, label1, reply2 = "", label2= ""):
     modal True
     vbox:

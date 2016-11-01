@@ -12,13 +12,13 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Yuri Jam")
+define config.name = _("A Cat With No Tail")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
@@ -29,14 +29,14 @@ define config.version = "1.0"
 ## Text that is placed on the game's about screen. To insert a blank line
 ## between paragraphs, write \n\n.
 
-define gui.about = _("")
+define gui.about = _("A Cat With No Tail\n\nA Yuri Game Jam 2016 Project \n\nMusic, Art, Writing - @chamotea\n\nProgramming, UI - @hacaplus \n\n")
 
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "YuriJam"
+define build.name = "ACWNT"
 
 
 ## Sounds and music ############################################################
@@ -46,7 +46,7 @@ define build.name = "YuriJam"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
