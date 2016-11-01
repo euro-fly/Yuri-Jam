@@ -4,10 +4,9 @@
 # eg. image eileen happy = "eileen_happy.png"
 
 init:
-
     image computerroom = Image("images/bg/ComputerRoom.png")
     image rooftop = Image("images/bg/Rooftop.png")
-
+    image zombies = Image("images/scenes/zombies_default.png")
     transform transpa:
 
         alpha 0.5
@@ -65,6 +64,8 @@ define s = Character('Stray', color="#c8ffc8")
 
 define k = Character('Kitsune', color="#c8f4ff")
 
+define narrator = nvl_narrator
+
 image phone = "images/phone/bustedphone.png"
 image bgphone = "images/phone/phone-def.png"
 image bg wasteland = "images/wasteland.jpg"
@@ -85,12 +86,15 @@ image stray frown = "images/sprites/stra-frown.png"
 image stray talk = "images/sprites/stra-open-default.png"
 image stray blush = "images/sprites/stra-smileblsh.png"
 image stray smile = "images/sprites/stra-smilepng.png"
+image stray uniform = "images/sprites/stra-uniform.png"
 
 image kitsune normal = "images/sprites/kit_default_phone.png"
 image kitsune baited = "images/sprites/kit_baited_phone.png"
 image kitsune smile = "images/sprites/kit_smile_phone.png"
 image kitsune smug = "images/sprites/kit_smug_phone.png"
 image kitsune talk = "images/sprites/kit_talk_phone.png"
+
+image zombies normal = "images/scenes/zombies_default.png"
 
 
 
@@ -145,10 +149,15 @@ label start:
     with fade
     
     $ renpy.pause(0.5)
-    scene bg computerblur
 
     $ double_vision_on("computerroom")
-    $ renpy.pause(0.2)
+    $ renpy.pause(0.5)
+
+
+    "Sun - Oct. 19 - 13:00"
+
+    nvl clear
+    window hide
 
     show bgphone at left
     with dissolve 
@@ -162,11 +171,15 @@ label start:
     $ renpy.pause()
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
-    show screen phone_message_system("You have now joined #monitors as *Stray.")
+    show screen phone_message_system("Current Topic: Welcome to the end of the world!")
     $ renpy.pause()
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
-    show screen phone_message_system("*Kitsune has entered #monitors.")
+    show screen phone_message_system("You have now joined #monitors as @Stray.")
+    $ renpy.pause()
+    hide screen phone_message_system
+    play sound "sfx/blop.mp3"
+    show screen phone_message_system("@Kitsune has entered #monitors.")
     $ renpy.pause()
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
@@ -191,6 +204,7 @@ label start:
     show screen phone_message_me("Same")
     $ renpy.pause()
     hide screen phone_message_me
+    play sound "sfx/blop.mp3"
     show screen phone_message_me("Let's see how fucked we are today.")
     $ renpy.pause(0.5)
     call screen phone_reply("!todaystatus", "notajump")
@@ -372,7 +386,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_system("*Ohms has entered #monitors.")
+    show screen phone_message_system("&Ohms has entered #monitors.")
     $ renpy.pause()
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
@@ -653,23 +667,190 @@ label start:
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
     show screen phone_message_other("Ohms", "rip")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("ANYWAY.")
+    $ renpy.pause()
+    hide screen phone_sticker_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Ohms- how's the rest of the chat? You did some maintenance, right?")
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Ohms", "!userstats")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_system("Current users: 3. (@Stray, @Kitsune, &Ohms)")
+    $ renpy.pause()
+    hide screen phone_message_system
+    play sound "sfx/blop.mp3"
+    show screen phone_message_system("The most users logged in was 6. (8d ago)")
+    $ renpy.pause()
+    hide screen phone_message_system
+    play sound "sfx/blop.mp3"
+    show screen phone_message_system("Other users: @Realist (last login 7d ago), @Engrave (last login 12h ago), @Picoco (last login 3h ago)")
+    $ renpy.pause()
+    hide screen phone_message_system
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("jesus")
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Ohms", "we better check on real. seven days is a while, let's hope he's ok.")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Alright. Keep us posted.")
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Ohms", "roger that. later o7")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_system("&Ohms has left #monitors.")
+    $ renpy.pause()
+    hide screen phone_message_system
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "maaaaaaaan. I can't believe I forgot the event was today T_T")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("lol")
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "you just don't get it. the struggle is v real, ok")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("the struggle... to live?")
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "the struggle to get the girl you want")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Tell me about it.")
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "it's certainly a good way to pass time ;3")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("I'll bet.")
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("no free time for me to kill, I'm afraid. I still need to finish my surveillance run.")
 
-
+    $ renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "roger that! take care out there.")
 
 
     $ renpy.pause()
-
     hide screen phone_message_other
-    hide phone
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "I demand a full report on my desk when you're back, soldier! o7")
+    $ renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("haha, copy that.")
+    $ renpy.pause(0.5)
+    call screen phone_reply("!logout", "notajump2")
 
-    $renpy.pause(0.2)
-    jump continues    
+label notajump2:
+
+    hide screen phone_message_me
+    hide phone
+    hide bgphone
+
+    $ renpy.pause(0.5)
+
+    
+    $renpy.pause()
+    "I logged out of the chat and closed the app on my phone. It looked like it was going to be another foggy day outside."
+    "To be perfectly honest, I can barely remember the last time the weather had ever really changed..."
+    "but on the brighter side, it saved me the hassle of having to rotate my wardrobe."
+    show stray normal
+    with dissolve
+
+    s "Sigh."
+
+    nvl clear
+
+    "I couldn't help but worry about the others. Seven days offline, given how things were... was more than a little concerning."
+    "I quietly hoped Ohms would get back to me sooner, rather than later."
+    "I tucked these thoughts at the back of my mind and took a granola bar from an overturned box on a nearby counter."
+
+    nvl clear
+
+    play sound "sfx/equip.mp3"
+    show stray uniform
+    with dissolve
+
+    "While fastening my gloves and vest, I scanned the threadbare map hanging on the wall."
+    "It was a map of the city, neatly divided into sectors and quadrants, depicting regions of infected that needed to be constantly maintained."
+    "Lucky for me, I happened to be placed dead center, right in the heart of everything."
+
+    nvl clear
+
+    hide stray
+    with dissolve
+
         
+
+    "The apartment I'd found myself holed up in was near the top floor of the building, complete with a balcony overlooking the aftermath of five years ago."
+    "Mobs forming in the streets, scores of deaths every day, power and water outages... the works. Kind of what you'd expect out of a run-of-the-mill zombie flick."
+    "Having seen a ton of them myself, I shouldn't have been as surprised as I was when it really did happen."
+    "It might be presumptuous of me to say so, but... I'd like to think that we've gotten through worst of it, with the containment effort well underway."
+    "I was with the army's reconnaissance team at the time, and was deployed here as a sniper shortly after the fact."
+
+    nvl clear
+    
+    scene bg zombies
+    $ double_vision_on("zombies")
+
+    "But unlike the movies, these weren't just feverish walking corpses. They almost seemed like different creatures entirely than us humans. Superior, almost."
+    "Some joker called them 'Omens'. Omens of what exactly, who knows. The name is almost needlessly dramatic, but it's the one that stuck. It's kind of hard to refer to them as anything else."
+    
+    nvl clear
+
+    "It took a while for us to figure out how these things worked, but we eventually managed to create some sort of classification system to help us deal with the Omen crisis."
+    "As far as we can tell, there are three kinds:"
+    "Good Omens,"
+    "Bad Omens,"
+    "and 'Grave' Omens."
+
+    nvl clear
+
+    "The main transmission vector was through an Omen's bodily fluids. Which is just a fancy way of saying that the infection mainly spread through bite marks, much like your standard zombie."
+    "What happened in the hours immediately following an infection, though... you didn't exactly just get killed, only to get up and kill."
+    "What {i}actually{/i} happened was decidedly worse."
+
+    nvl clear
+
+    "After contracting the infection, the victim would fall into a coma because of the severity of the immune system response, with all trace of color drained from their skin."
+    "The victim's facial features would then almost recede entirely into the head, the coagulated flesh oozing through the skin, forming tumor-like protrusions elsewhere on the body."
+    "What you had left was an ash- or bone-pale corpse with no face, completely unrecognizable."
+    "No eyes, no nose... five years, and I still haven't managed to figure out how these things managed to see."
+
+    nvl clear
+
+    "An Omen's mouth was probably the most important part of which to take note."
+
+
+
 ##Hide cellphone screen
 
     
     
 label continues:
-    window show
     s "My mom is great."
     return 
