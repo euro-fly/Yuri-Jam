@@ -2,8 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 158: expected end of line
-    window hide with fade
-                ^
+File "game/script.rpy", line 862: expected statement.
+    "The Omen's mouth was located on its stomach, lips pursed into a smile with shark-like incisors. It relished the taste of flesh as it smeared the blood onto its featureless face, trying to remember which orifice to eat from."\
+                                                                                                                                                                                                                                     ^
 
 Ren'Py Version: Ren'Py 6.99.11.1749

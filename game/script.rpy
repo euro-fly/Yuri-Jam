@@ -7,6 +7,7 @@ init:
     image computerroom = Image("images/bg/ComputerRoom.png")
     image rooftop = Image("images/bg/Rooftop.png")
     image zombies = Image("images/scenes/zombies_default.png")
+    image zombiesblood = Image("images/scenes/zombies_blood.png")
     transform transpa:
 
         alpha 0.5
@@ -67,7 +68,8 @@ define k = Character('Kitsune', color="#c8f4ff")
 define narrator = nvl_narrator
 
 image phone = "images/phone/bustedphone.png"
-image bgphone = "images/phone/phone-def.png"
+image chatphone = "images/phone/phone-def.png"
+image lockphone = "images/phone/phone-default.png"
 image bg wasteland = "images/wasteland.jpg"
 image bg wip = "images/bg/bg wip.png"
 image bg computerroom = "images/bg/ComputerRoom.png"
@@ -94,7 +96,8 @@ image kitsune smile = "images/sprites/kit_smile_phone.png"
 image kitsune smug = "images/sprites/kit_smug_phone.png"
 image kitsune talk = "images/sprites/kit_talk_phone.png"
 
-image zombies normal = "images/scenes/zombies_default.png"
+image bg zombies = "images/scenes/zombies_default.png"
+image bg zombiesblood = "images/scenes/zombies_blood.png"
 
 
 
@@ -159,7 +162,7 @@ label start:
     nvl clear
     window hide
 
-    show bgphone at left
+    show chatphone at left
     with dissolve 
     ## Add cellphone screen here
     $ renpy.pause(0.5)
@@ -190,8 +193,6 @@ label start:
     show screen phone_message_me("How's it going?")
     $renpy.pause()
     hide screen phone_message_me
-    
-    hide screen phone_sticker_other
     play sound "sfx/blop.mp3"
     show screen phone_message_other("Kitsune", "Hey hey~")
     $ renpy.pause()
@@ -221,7 +222,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
-    show screen phone_message_system("Attack reported in California at 1300 hours, with 10 reported casualties.")
+    show screen phone_message_system("Attack reported in California at 1300 hours, with 10 dead.")
     $ renpy.pause()
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
@@ -249,7 +250,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "sowwy~")
+    show screen phone_message_other("Kitsune", "hmm")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -257,11 +258,11 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "while hanging around uncharted territory near my place yesterday")
+    show screen phone_message_other("Kitsune", "I mapped out some of the uncharted waters around my place")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "i found an empty home")
+    show screen phone_message_other("Kitsune", "found an empty home")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -289,7 +290,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "funyuns, BBQ chips, the works.")
+    show screen phone_message_other("Kitsune", "found a can of pringles, but i've also got funyuns, BBQ chips, the works.")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -297,11 +298,11 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_me("haven't had some in years, son of a gun")
+    show screen phone_message_me("haven't had some in years, you lucky son of a gun")
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "is the gun fully-automatic, at least~?")
+    show screen phone_message_other("Kitsune", "huhu~ the only guns *i* have are fully-automatic.")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -309,15 +310,11 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "but on a serious note i found some bottled water")
+    show screen phone_message_other("Kitsune", "but supplies-wise, i found some bottled water")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "which is always nice")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "and... a ton of those CDs you'd probably like i think")
+    show screen phone_message_other("Kitsune", "and... those types CDs you'd probably like i think")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -325,11 +322,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "oh, mostly jazz stuff")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "at least i think it's jazz.")
+    show screen phone_message_other("Kitsune", "oh, mostly old jazz stuff")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -345,7 +338,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "don't look at me, i'm not like, an expert")
+    show screen phone_message_other("Kitsune", "look, i don't really know")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -426,7 +419,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "my hero~")
+    show screen phone_message_other("Kitsune", "pls flex more, my hero~")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -486,7 +479,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_me("I'm still salty. goddamn.")
+    show screen phone_message_me("goddamn.")
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
@@ -594,7 +587,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "better get your ass back in grinding hell if you wanna catch up")
+    show screen phone_message_other("Ohms", "better get your ass back in grinding hell")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -614,7 +607,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_me("I don't think I will ever understand how you guys are STILL playing that game despite the apocalypse")
+    show screen phone_message_me("I can't believe you guys STILL play those mobile games despite the apocalypse")
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
@@ -626,15 +619,15 @@ label start:
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_me("You two are such millennials.")
+    show screen phone_message_me("Kids today.")
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "omg look who's talking")
+    show screen phone_message_other("Kitsune", "omg like you're soooo old")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_me("Look, you could play so many other games")
+    show screen phone_message_me("Look")
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
@@ -646,15 +639,11 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "zzzz")
+    show screen phone_message_other("Kitsune", "ok but zzzz")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "straaaaaay")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "joiiiiiiin ussssss")
+    show screen phone_message_other("Kitsune", "you should be playing this so we can play together")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -698,7 +687,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "we better check on real. seven days is a while, let's hope he's ok.")
+    show screen phone_message_other("Ohms", "we better check on real. let's hope he's ok.")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -722,7 +711,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "you just don't get it. the struggle is v real, ok")
+    show screen phone_message_other("Kitsune", "you just don't get it. the struggle is real, ok")
     $ renpy.pause()
     hide screen phone_message_other
     play sound "sfx/blop.mp3"
@@ -746,7 +735,7 @@ label start:
     $ renpy.pause()
     hide screen phone_message_me
     play sound "sfx/blop.mp3"
-    show screen phone_message_me("no free time for me to kill, I'm afraid. I still need to finish my surveillance run.")
+    show screen phone_message_me("I still need to finish my surveillance run though.")
 
     $ renpy.pause()
     hide screen phone_message_me
@@ -767,17 +756,19 @@ label start:
 
 label notajump2:
 
-    hide screen phone_message_me
+    hide screen phone_message_meR
     hide phone
-    hide bgphone
+    hide chatphone
+
+    play music "bgm/waiting.mp3"
 
     $ renpy.pause(0.5)
 
     
     $renpy.pause()
     "I logged out of the chat and closed the app on my phone. It looked like it was going to be another foggy day outside."
-    "To be perfectly honest, I can barely remember the last time the weather had ever really changed..."
-    "but on the brighter side, it saved me the hassle of having to rotate my wardrobe."
+    "Not that the weather ever really changed much to begin with."
+    "On the brighter side, it saved me the hassle of having to rotate my wardrobe."
     show stray normal
     with dissolve
 
@@ -785,9 +776,9 @@ label notajump2:
 
     nvl clear
 
-    "I couldn't help but worry about the others. Seven days offline, given how things were... was more than a little concerning."
-    "I quietly hoped Ohms would get back to me sooner, rather than later."
-    "I tucked these thoughts at the back of my mind and took a granola bar from an overturned box on a nearby counter."
+    "I couldn't help but worry about the others. Being away for that long was more than a little concerning."
+    "I quietly hoped Ohms would get back to me soon."
+    "I tucked these thoughts at the back of my mind and took a granola bar from a nearby counter."
 
     nvl clear
 
@@ -796,8 +787,8 @@ label notajump2:
     with dissolve
 
     "While fastening my gloves and vest, I scanned the threadbare map hanging on the wall."
-    "It was a map of the city, neatly divided into sectors and quadrants, depicting regions of infected that needed to be constantly maintained."
-    "Lucky for me, I happened to be placed dead center, right in the heart of everything."
+    "It depicted the quadrants of infected that needed to be constantly checked and maintained."
+    "My unit happened to be placed dead center, right in the heart of the city."
 
     nvl clear
 
@@ -806,51 +797,238 @@ label notajump2:
 
         
 
-    "The apartment I'd found myself holed up in was near the top floor of the building, complete with a balcony overlooking the aftermath of five years ago."
-    "Mobs forming in the streets, scores of deaths every day, power and water outages... the works. Kind of what you'd expect out of a run-of-the-mill zombie flick."
-    "Having seen a ton of them myself, I shouldn't have been as surprised as I was when it really did happen."
-    "It might be presumptuous of me to say so, but... I'd like to think that we've gotten through worst of it, with the containment effort well underway."
-    "I was with the army's reconnaissance team at the time, and was deployed here as a sniper shortly after the fact."
+    "The apartment I'd found myself holed up in was near the top floor of the building, overlooking the aftermath of five years ago."
+    "2011 was when all of this apocalypse stuff really began. And the same chaos that you'd expect out of a zombie movie did unfold."
+    "Mass panic, deaths, power and water outages... the works. I was in the military as a sniper at the time, and was stationed here after most of the containment had taken place."
 
     nvl clear
     
     scene bg zombies
+    with fade
     $ double_vision_on("zombies")
 
-    "But unlike the movies, these weren't just feverish walking corpses. They almost seemed like different creatures entirely than us humans. Superior, almost."
-    "Some joker called them 'Omens'. Omens of what exactly, who knows. The name is almost needlessly dramatic, but it's the one that stuck. It's kind of hard to refer to them as anything else."
+    "But unlike the movies, these weren't just your run-of-the-mill infected corpses. They seemed like almost superior mutations."
+    "We call them 'Omens'. Omens of what exactly, who knows. Laugh at the name if you want, but it's the one that stuck. It's what we've been calling them all this time."
     
     nvl clear
 
-    "It took a while for us to figure out how these things worked, but we eventually managed to create some sort of classification system to help us deal with the Omen crisis."
-    "As far as we can tell, there are three kinds:"
+    "As far as we can tell, there are three categories:"
     "Good Omens,"
     "Bad Omens,"
     "and 'Grave' Omens."
 
     nvl clear
 
-    "The main transmission vector was through an Omen's bodily fluids. Which is just a fancy way of saying that the infection mainly spread through bite marks, much like your standard zombie."
-    "What happened in the hours immediately following an infection, though... you didn't exactly just get killed, only to get up and kill."
-    "What {i}actually{/i} happened was decidedly worse."
+    "Just like your typical undead virus, the Omen infection seemed to spread through bite marks."
+    "What happened after a bite, though, you didn't just die and turn into a walking corpse."
+    "What {i}actually{/i} happened was much more horrific."
 
     nvl clear
 
-    "After contracting the infection, the victim would fall into a coma because of the severity of the immune system response, with all trace of color drained from their skin."
-    "The victim's facial features would then almost recede entirely into the head, the coagulated flesh oozing through the skin, forming tumor-like protrusions elsewhere on the body."
-    "What you had left was an ash- or bone-pale corpse with no face, completely unrecognizable."
-    "No eyes, no nose... five years, and I still haven't managed to figure out how these things managed to see."
+    "After contracting the infection, the victim would catch a fever. And after the fever, a coma."
+    "Parts of the face would slowly melt, only to form elsewhere on the body."
+    "The Omens became just ash- or bone-pale corpses with no face, completely unrecognizable."
+    "I never quite figured out where the eyes went, but the mouth always followed a sort of pattern."
 
     nvl clear
 
-    "An Omen's mouth was probably the most important part of which to take note."
+    "The vast majority of Omens were regular 'Bad Omens'."
+    "Usually, the mouth would either remain on the face, or reform closer to the chest or stomach. They'd usually stretch to form something alien-like."
+    "When you're attacked, you could see the almost-invisible creases slowly opening up for a bite."
+    "To kill them, you'd have to shoot them in the head. I've also found a shot right through the mouth to be quite effective."
 
+    nvl clear
 
+    "On rare occasions, I'd run into a type of Omen that didn't really try to attack."
+    "These ones - classified as 'Good Omens' - usually ignored people for seemingly more interesting things."
+    "Scientists are still unsure as to why, but in the absence of a cure, perhaps these Omens were still clinging onto what little humanity they had left, making them more docile than most."
+    "For these types, the mouth remained the same size as a regular human's, but reformed in various strange places."
+    "I've seen them on hands, or arms, but I'm pretty sure they can reform on other parts of the body. I must admit I am a little curious."
+
+    nvl clear
+
+    "Lastly, we have 'Grave Omens.'"
+    "These ones... are smarter than the rest. Almost calculating, even."
+    "While Bad Omens tended to herd and wander around in different directions with no specific aim, Grave Omens seemed sentient enough to navigate and maneuver around buildings, like a trained predator."
+    "I shudder to remember some of my encounters with more than a few of them. Taking them out took careful planning. They weren't nearly as predictable as their counterparts, and were much more dangerous for it."
+
+    nvl clear
+
+    scene bg zombiesblood
+    with fade
+    $ double_vision_on("zombiesblood")
+
+    "I saw one killing a comrade of mine. It moved with inhuman speed, contorting its body as it darted out, biting clean through the soldier's chest."
+    "The Omen's mouth was located on its stomach, lips pursed into a smile with shark-like incisors. It relished the taste of flesh as it smeared the blood onto its featureless face, trying to remember which orifice to eat from."
+    "Then it turned to me, and contemplated whether or not it should kill me, too."
+    # play a gunshot?
+
+    nvl clear
+
+    play sound "sfx/gunshot.mp3"
+
+    "Panicking, I shot at its head and missed, barely grazing its face."
+    "The Omen formed a frown with its giant mouth, mid-chew, and ran off, never to be seen again."
+    "I still wonder if that Grave Omen still roams about the city, lurking in the shadows, just waiting to finish what it started."
+    "Needless to say, I try not to dwell too much on this."
+
+    nvl clear
+
+    "Since then, I've faced off with two other Grave Omens, neither of which I'd like to remember."
+    "It's just comforting to know that I'm still here, breathing. And honing my reflexes for the next day."
+
+    scene bg computerroom
+    $ double_vision_on("computerroom")
+
+    show stray uniform
+    with dissolve
+
+    $ renpy.pause(0.5)
+
+    show lockphone at left
+    with dissolve
+
+    "I sighed again, looking at the screen of my locked phone. Who knows if I'll even live to see the next day?"
+
+    hide lockphone
+
+    play sound "sfx/equip.mp3"
+
+    "After double-checking my equipment, I made a firm pat of my packs and grabbed my sniper rifle. I headed toward the roof to scope out the perimeter."
+
+    nvl clear
+
+    show bg rooftop
+    with fade
+
+    $ double_vision_on("rooftop")
+
+    "Up on the roof, not a lot had changed."
+    "It was just a flat expanse of concrete, with a few accommodations in a fenced-off corner."
+    "My laundry hung near it, fluttering in the low breeze to the low screeching of Omens."
+    "I had a crate propped up near the edge of the roof to mount my rifle on top. I did so, and proceeded to scope the area."
+
+    nvl clear
+
+    "Like yesterday, masses of Omens littered the alleys and streets."
+    "I never thought I'd ever miss the loud honks and noises of the city."
+    "Now it just seemed like a lingering memory as I swept my eyes across the vast, human-less landscape."
+
+    nvl clear 
+    play sound "sfx/vibrate.mp3"
+
+    "I jolted as I felt a buzz in my pocket."
+
+    show chatphone at left
+    with dissolve
+
+    s "Ah..."
+
+    "I looked down at my phone, annoyed, after realizing that I didn't properly exit the chatroom app."
+    "Kitsune had logged back on to message me. It looked like she opened up a private chat window."
+
+    play music "bgm/thumps.mp3"
+
+    nvl clear
+
+    
+    $ renpy.pause(0.5)
+    show phone at phone_pickup
+    with dissolve
+    $ renpy.pause()
+    play sound "sfx/blop.mp3"
+    show screen phone_message_system("You have joined the private chat with @Kitsune as @Stray.")
+    $ renpy.pause()
+    hide screen phone_message_system
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("What's up? Kind of busy.")
+    $renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "Sorry, it's just")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "I was looking at the monitors")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "I couldn't help but notice an unusual amount of Omens in the west wing you were about to check out.")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Hmm. It's a little strange to hear you speaking seriously for once.")
+    $renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "Can it :/")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "you know I worry.")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Yeah yeah.")
+    $renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Thanks for the heads up")
+    $renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Any more reports before I close the app for good?")
+    $renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("You know sudden alerts make me uneasy.")
+    $renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "Hmm... no")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "Just, be careful ok? >_>")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("Will do. I'll check in when I'm done.")
+    $renpy.pause()
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_other("Kitsune", "Mmkay. Watch your back out there.")
+    $renpy.pause()
+    hide screen phone_message_other
+    play sound "sfx/blop.mp3"
+    show screen phone_message_me("I always do.")
+    $ renpy.pause(0.5)
+    call screen phone_reply("!logout", "kitprivatechat1")
+
+label kitprivatechat1:
+    hide screen phone_message_me
+    play sound "sfx/blop.mp3"
+    show screen phone_message_system("You have logged out.")
+    $ renpy.pause()
+    hide screen phone_message_system
+    hide phone
+    with dissolve
+
+    $renpy.pause(0.5)
+
+    play music "bgm/main stay.mp3"
+
+    hide chatphone
+    show lockphone at left
+    "This time, I made sure to turn off my phone and set it in my pocket."
+    hide lockphone
+    "I was glad Kitsune was worried, but any more sudden buzzes and I was going to lose my shit on this roof."
+    "It {i}was{/i} sweet knowing that she seemed genuinely concerned, though."
+    "I stared through my scope and my mind began to wander, back to the past."
 
 ##Hide cellphone screen
 
     
     
 label continues:
-    s "My mom is great."
     return 

@@ -1,71 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 263, in script
-    $ renpy.pause()
-  File "game/script.rpy", line 263, in <module>
-    $ renpy.pause()
-  File "game/screens.rpy", line 1543, in execute
-    screen phone_sticker_other(who, what):
-  File "game/screens.rpy", line 1543, in execute
-    screen phone_sticker_other(who, what):
-  File "game/screens.rpy", line 1544, in execute
-    vbox at incoming_message:
-  File "game/screens.rpy", line 1547, in execute
-    frame:
-  File "game/screens.rpy", line 1550, in execute
-    vbox:
-  File "game/screens.rpy", line 1556, in execute
-    if what != null:
-NameError: name 'null' is not defined
+  File "renpy/common/00start.rpy", line 106, in script
+    return
+Exception: Could not find return label (u'D:\\Renpy\\Yuri Jam/game/script.rpy', 1478144406, 256).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 263, in script
-    $ renpy.pause()
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 805, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\python.py", line 1641, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/script.rpy", line 263, in <module>
-    $ renpy.pause()
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\exports.py", line 1267, in pause
-    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ui.py", line 278, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2496, in interact
-    repeat, rv = self.interact_core(preloads=preloads, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2764, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 464, in visit_all
-    d.visit_all(callback)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 464, in visit_all
-    d.visit_all(callback)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 464, in visit_all
-    d.visit_all(callback)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 394, in visit_all
-    callback(self)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2764, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 404, in per_interact
-    self.update()
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\screen.py", line 573, in update
-    self.screen.function(**self.scope)
-  File "game/screens.rpy", line 1543, in execute
-    screen phone_sticker_other(who, what):
-  File "game/screens.rpy", line 1543, in execute
-    screen phone_sticker_other(who, what):
-  File "game/screens.rpy", line 1544, in execute
-    vbox at incoming_message:
-  File "game/screens.rpy", line 1547, in execute
-    frame:
-  File "game/screens.rpy", line 1550, in execute
-    vbox:
-  File "game/screens.rpy", line 1556, in execute
-    if what != null:
-  File "<screen language>", line 1556, in <module>
-NameError: name 'null' is not defined
+  File "renpy/common/00start.rpy", line 106, in script
+    return
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 1367, in execute
+    next_node(renpy.game.context().lookup_return(pop=True))
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\execution.py", line 523, in lookup_return
+    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
+Exception: Could not find return label (u'D:\\Renpy\\Yuri Jam/game/script.rpy', 1478144406, 256).
 
 Windows-8-6.2.9200
 Ren'Py 6.99.11.1749
