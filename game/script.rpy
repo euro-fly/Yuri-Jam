@@ -125,7 +125,7 @@ transform phone_message_bubble_tip3:
     yoffset 1
 
 transform scrolling_out_message:
-    easeout 0.1 yoffset -30 alpha 0
+    easeout 0.1 yoffset -20 alpha 0
         
 transform incoming_message:
     yoffset 300
@@ -153,6 +153,7 @@ label message(who, what):
     hide screen phone_message_system
     hide screen phone_sticker_other
     hide screen phone_sticker_me
+    $ renpy.pause(0.1)
     play sound "sfx/blop.mp3"
     if who.lower() == "stray":
         show screen phone_message_me(what)
@@ -169,6 +170,7 @@ label sticker(who, what):
     hide screen phone_message_system
     hide screen phone_sticker_other
     hide screen phone_sticker_me
+    $ renpy.pause(0.1)
     play sound "sfx/blop.mp3"
     if who.lower() == "stray":
         show screen phone_sticker_me(what)
@@ -199,591 +201,165 @@ label start:
     with dissolve 
     ## Add cellphone screen here
     $ renpy.pause(0.5)
+
     show phone at phone_pickup
     with dissolve
-    call message("system", "#monitors: survivors chatroom for general bullshit")
-    
 
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Current Topic: Welcome to the end of the world!")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("You have now joined #monitors as @Stray.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("@Kitsune has entered #monitors.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Hey")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("How's it going?")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Hey hey~")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Just got up.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Same")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Let's see how fucked we are today.")
+    call message("system", "#monitors: survivors chatroom for general bullshit")
+    call message("system", "Current Topic: Welcome to the end of the world!")
+    call message("system", "You have now joined #monitors as @Stray.")
+    call message("system", "@Kitsune has entered #monitors.")
+    call message("Stray", "Hey")
+    call message("Stray", "How's it going?")
+    call message("Kitsune", "Hey hey~")
+    call message("Kitsune", "Just got up.")
+    call message("Stray", "Same")
+    call message("Stray", "Let's see how fucked we are today.")
+
     $ renpy.pause(0.5)
     call screen phone_reply("!todaystatus", "notajump")
     
-    label notajump:
+label notajump:
+
     hide screen phone_message_me
     $ renpy.pause(0.5)
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Current temperature: 61F/16C. Cloudy with possible showers.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Headline #6661: Year Five of the ongoing Omen crisis. Situation still grave, as usual. No progress on a cure.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Attack reported in California at 1300 hours, with 10 dead.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Refer to !pop for current population data.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Looking grim~")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("tell me something I don't know.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "wow, someone's full of sunshine today.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "feeling lonely?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("oh shut up.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "hmm")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "well if it makes you feel any better")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "I mapped out some of the uncharted waters around my place")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "found an empty home")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "WITH UNTOUCHED SNACKS")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("AAAAAAA")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "yep!!")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_sticker_other("Kitsune", "chips")
-    $ renpy.pause()
-    hide screen phone_sticker_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "just to make you jealous.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "i had no idea salty chips could ever taste so sweet.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "found a can of pringles, but i've also got funyuns, BBQ chips, the works.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("haha i could certainly go for chips right now")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("haven't had some in years, you lucky son of a gun")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "huhu~ the only guns *i* have are fully-automatic.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("...")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "but supplies-wise, i found some bottled water")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "and... those types CDs you'd probably like i think")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Hm?")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "oh, mostly old jazz stuff")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_sticker_other("Kitsune", "jazz")
-    $ renpy.pause()
-    hide screen phone_sticker_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "like, we've got... one of em was by Miles something or other.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "then you had the... cannon ball?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "look, i don't really know")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "it seemed like it was your kinda thing is all")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Yeah yeah.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "How are things on your end?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Hmm")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Went up top today to do a surveillance sweep, all clear so far.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Weather is *still* foggy as shit.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Omens are gathering in the usual spots, so I picked a number of them off today.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "My hard little worker~")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me(">_>")
 
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("&Ohms has entered #monitors.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Oh hey Ohms! o/")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("yo")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "You kids. Flirting while I'm not around.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("uuuuuugh")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "hahahahaha")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "Anyways")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "how goes it?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Oh, Stray here was just telling me of her heroic tales")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Killing Omens left and right on surveillance duty")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "pls flex more, my hero~")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Save me.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "lol. your problem not mine.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("...")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("how have you been, ohms?")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "eh, same old same old")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "stayed holed-up. played some net games.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "just shut-in things.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "I should prob go out and stretch my legs, do some killing.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "But. You know how it is where I am.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("mm.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "er")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "doing okay there, stray?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("oh")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("my bad. kit was just showing off her snack haul.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("goddamn.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "oh what")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "lmao I see it")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "daaaaaamn. funyuns, too?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "damn straight!")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "eyyyyy")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("...")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("I hope they're SOGGY AS SHIT.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "wow rude")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "^")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "but that aside. how goes surveillance, Stray? going out again today?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("yeah. most likely.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("the west wing still needs to be secured.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "sounds rough.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("eh. it is what it is.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "not just strong, but humble too~ what a hero.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me(">________>")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "ah, yes. this is what i am here for.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Ugh not you too?")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "hey, look man")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "it's not like I have anything better to do")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "Kitsune- oh btw")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "what's up?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "event's up. how far have you gotten?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "OH")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Shit, that's TODAY?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "yep.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "better get your ass back in grinding hell")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "FFFFFFFFFfffffff")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "fffffff")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "fff")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Yeah no")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("I can't believe you guys STILL play those mobile games despite the apocalypse")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "IT'S WHAT I LIVE FOR.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "SAME.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Kids today.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "omg like you're soooo old")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Look")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_sticker_me("ps2")
-    $ renpy.pause()
-    hide screen phone_sticker_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("There's a working PS2 and a backlog to last you DAYS")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "ok but zzzz")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "you should be playing this so we can play together")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Pass.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", ":'(")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "rip")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("ANYWAY.")
-    $ renpy.pause()
-    hide screen phone_sticker_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Ohms- how's the rest of the chat? You did some maintenance, right?")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "!userstats")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Current users: 3. (@Stray, @Kitsune, &Ohms)")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("The most users logged in was 6. (8d ago)")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Other users: @Realist (last login 7d ago), @Engrave (last login 12h ago), @Picoco (last login 3h ago)")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("jesus")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "we better check on real. let's hope he's ok.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Alright. Keep us posted.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "roger that. later o7")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("&Ohms has left #monitors.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "maaaaaaaan. I can't believe I forgot the event was today T_T")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("lol")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "you just don't get it. the struggle is real, ok")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("the struggle... to live?")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "the struggle to get the girl you want")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Tell me about it.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "it's certainly a good way to pass time ;3")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("I'll bet.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("I still need to finish my surveillance run though.")
+    call message("system", "Current temperature: 61F/16C. Cloudy with possible showers.")
+    call message("system", "Headline #6661: Year Five of the ongoing Omen crisis. Situation still grave, as usual. No progress on a cure.")
+    call message("system", "Attack reported in California at 1300 hours, with 10 dead.")
+    call message("system", "Refer to !pop for current population data.")
+    call message("Kitsune", "Looking grim~")
+    call message("Stray", "tell me something I don't know.")
+    call message("Kitsune", "wow, someone's full of sunshine today.")
+    call message("Kitsune", "feeling lonely?")
+    call message("Stray", "oh shut up.")
+    call message("Kitsune", "hmm")
+    call message("Kitsune", "well if it makes you feel any better")
+    call message("Kitsune", "I mapped out some of the uncharted waters around my place")
+    call message("Kitsune", "found an empty home")
+    call message("Kitsune", "WITH UNTOUCHED SNACKS")
+    call message("Stray", "AAAAAAA")
+    call message("Kitsune", "yep!!")
+    call sticker("Kitsune", "chips")
+    call message("Kitsune", "just to make you jealous.")
+    call message("Kitsune", "i had no idea salty chips could ever taste so sweet.")
+    call message("Kitsune", "found a can of pringles, but i've also got funyuns, BBQ chips, the works.")
+    call message("Stray", "haha i could certainly go for chips right now")
+    call message("Stray", "haven't had some in years, you lucky son of a gun")
+    call message("Kitsune", "huhu~ the only guns *i* have are fully-automatic.")
+    call message("Stray", "...")
+    call message("Kitsune", "but supplies-wise, i found some bottled water")
+    call message("Kitsune", "and... those types CDs you'd probably like i think")
+    call message("Stray", "Hm?")
+    call message("Kitsune", "oh, mostly old jazz stuff")
+    call sticker("Kitsune", "jazz")
+    call message("Kitsune", "like, we've got... one of em was by Miles something or other.")
+    call message("Kitsune", "then you had the... cannon ball?")
+    call message("Kitsune", "look, i don't really know")
+    call message("Kitsune", "it seemed like it was your kinda thing is all")
+    call message("Stray", "Yeah yeah.")
+    call message("Kitsune", "How are things on your end?")
+    call message("Stray", "Hmm")
+    call message("Stray", "Went up top today to do a surveillance sweep, all clear so far.")
+    call message("Stray", "Weather is *still* foggy as shit.")
+    call message("Stray", "Omens are gathering in the usual spots, so I picked a number of them off today.")
+    call message("Kitsune", "My hard little worker~")
+    call message("Stray", ">_>")
+    call message("system", "&Ohms has entered #monitors.")
+    call message("Kitsune", "Oh hey Ohms! o/")
+    call message("Stray", "yo")
+    call message("Ohms", "You kids. Flirting while I'm not around.")
+    call message("Stray", "uuuuuugh")
+    call message("Kitsune", "hahahahaha")
+    call message("Ohms", "Anyways")
+    call message("Ohms", "how goes it?")
+    call message("Kitsune", "Oh, Stray here was just telling me of her heroic tales")
+    call message("Kitsune", "Killing Omens left and right on surveillance duty")
+    call message("Kitsune", "pls flex more, my hero~")
+    call message("Stray", "Save me.")
+    call message("Ohms", "lol. your problem not mine.")
+    call message("Stray", "...")
+    call message("Stray", "how have you been, ohms?")
+    call message("Ohms", "eh, same old same old")
+    call message("Ohms", "stayed holed-up. played some net games.")
+    call message("Ohms", "just shut-in things.")
+    call message("Ohms", "I should prob go out and stretch my legs, do some killing.")
+    call message("Ohms", "But. You know how it is where I am.")
+    call message("Stray", "mm.")
+    call message("Ohms", "er")
+    call message("Ohms", "doing okay there, stray?")
+    call message("Stray", "oh")
+    call message("Stray", "my bad. kit was just showing off her snack haul.")
+    call message("Stray", "goddamn.")
+    call message("Ohms", "oh what")
+    call message("Ohms", "lmao I see it")
+    call message("Ohms", "daaaaaamn. funyuns, too?")
+    call message("Kitsune", "damn straight!")
+    call message("Ohms", "eyyyyy")
+    call message("Stray", "...")
+    call message("Stray", "I hope they're SOGGY AS SHIT.")
+    call message("Kitsune", "wow rude")
+    call message("Ohms", "^")
+    call message("Ohms", "but that aside. how goes surveillance, Stray? going out again today?")
+    call message("Stray", "yeah. most likely.")
+    call message("Stray", "the west wing still needs to be secured.")
+    call message("Ohms", "sounds rough.")
+    call message("Stray", "eh. it is what it is.")
+    call message("Kitsune", "not just strong, but humble too~ what a hero.")
+    call message("Stray", ">________>")
+    call message("Ohms", "ah, yes. this is what i am here for.")
+    call message("Stray", "Ugh not you too?")
+    call message("Ohms", "hey, look man")
+    call message("Ohms", "it's not like I have anything better to do")
+    call message("Ohms", "Kitsune- oh btw")
+    call message("Kitsune", "what's up?")
+    call message("Ohms", "event's up. how far have you gotten?")
+    call message("Kitsune", "OH")
+    call message("Kitsune", "Shit, that's TODAY?")
+    call message("Ohms", "yep.")
+    call message("Ohms", "better get your ass back in grinding hell")
+    call message("Kitsune", "FFFFFFFFFfffffff")
+    call message("Kitsune", "fffffff")
+    call message("Kitsune", "fff")
+    call message("Stray", "Yeah no")
+    call message("Stray", "I can't believe you guys STILL play those mobile games despite the apocalypse")
+    call message("Kitsune", "IT'S WHAT I LIVE FOR.")
+    call message("Ohms", "SAME.")
+    call message("Stray", "Kids today.")
+    call message("Kitsune", "omg like you're soooo old")
+    call message("Stray", "Look")
+    call sticker("stray","ps2")
+    call message("Stray", "There's a working PS2 and a backlog to last you DAYS")
+    call message("Kitsune", "ok but zzzz")
+    call message("Kitsune", "you should be playing this so we can play together")
+    call message("Stray", "Pass.")
+    call message("Kitsune", ":'(")
+    call message("Ohms", "rip")
+    call message("Stray", "ANYWAY.")
+    call message("Stray", "Ohms- how's the rest of the chat? You did some maintenance, right?")
+    call message("Ohms", "Oh yeah, lemme check")
+    call message("Ohms", "!userstats")
+    call message("system", "Current users: 3. (@Stray, @Kitsune, &Ohms)")
+    call message("system", "The most users logged in was 6. (8d ago)")
+    call message("system", "Other users: @Realist (last login 7d ago), @Engrave (last login 12h ago), @Picoco (last login 3h ago)")
+    call message("Stray", "jesus")
+    call message("Ohms", "we better check on real. let's hope he's ok.")
+    call message("Stray", "Alright. Keep us posted.")
+    call message("Ohms", "roger that. later o7")
+    call message("system", "&Ohms has left #monitors.")
+    call message("Kitsune", "maaaaaaaan. I can't believe I forgot the event was today T_T")
+    call message("Stray", "lol")
+    call message("Kitsune", "you just don't get it. the struggle is real, ok")
+    call message("Stray", "the struggle... to live?")
+    call message("Kitsune", "the struggle to get the girl you want")
+    call message("Stray", "Tell me about it.")
+    call message("Kitsune", "it's certainly a good way to pass time ;3")
+    call message("Stray", "I'll bet.")
+    call message("Stray", "I still need to finish my surveillance run though.")
+    call message("Kitsune", "roger that! take care out there.")
+    call message("Kitsune", "I demand a full report on my desk when you're back, soldier! o7")
+    call message("Stray", "haha, copy that.")
 
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "roger that! take care out there.")
-
-
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "I demand a full report on my desk when you're back, soldier! o7")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("haha, copy that.")
     $ renpy.pause(0.5)
     call screen phone_reply("!logout", "notajump2")
 
@@ -826,9 +402,7 @@ label notajump2:
     nvl clear
 
     hide stray
-    with dissolve
-
-        
+    with dissolve        
 
     "The apartment I'd found myself holed up in was near the top floor of the building, overlooking the aftermath of five years ago."
     "2011 was when all of this apocalypse stuff really began. And the same chaos that you'd expect out of a zombie movie did unfold."
@@ -956,99 +530,55 @@ label notajump2:
 
     s "Ah..."
 
-
-
     "I looked down at my phone, annoyed, after realizing that I didn't properly exit the chatroom app."
 
     stop music fadeout 1.0
     "Kitsune had logged back on to message me. It looked like she opened up a private chat window."
 
-
-
     play music "bgm/thumps.mp3"
 
     nvl clear
-
     
     $ renpy.pause(0.5)
     show phone at phone_pickup
     with dissolve
     $ renpy.pause()
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("You have joined the private chat with @Kitsune as @Stray.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("What's up? Kind of busy.")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Sorry, it's just")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "I was looking at the monitors")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "I couldn't help but notice an unusual amount of Omens in the west wing you were about to check out.")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Hmm. It's a little strange to hear you speaking seriously for once.")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Can it :/")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "you know I worry.")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Yeah yeah.")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Thanks for the heads up")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Any more reports before I close the app for good?")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("You know sudden alerts make me uneasy.")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Hmm... no")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Just, be careful ok? >_>")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Will do. I'll check in when I'm done.")
-    $renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Mmkay. Watch your back out there.")
-    $renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("I always do.")
+
+    call message("system", "You have joined the private chat with @Kitsune as @Stray.")
+
+
+    call message("Stray", "What's up? Kind of busy.")
+    call message("Kitsune", "Sorry, it's just")
+
+    call message("Kitsune", "I was looking at the monitors")
+
+    call message("Kitsune", "I couldn't help but notice an unusual amount of Omens in the west wing you were about to check out.")
+    call message("Stray", "Hmm. It's a little strange to hear you speaking seriously for once.")
+
+    call message("Kitsune", "Can it :/")
+
+    call message("Kitsune", "you know I worry.")
+
+    call message("Stray", "Yeah yeah.")
+    call message("Stray", "Thanks for the heads up")
+    call message("Stray", "Any more reports before I close the app for good?")
+    call message("Stray", "You know sudden alerts make me uneasy.")
+    call message("Kitsune", "Hmm... no")
+
+    call message("Kitsune", "Just, be careful ok? >_>")
+    call message("Stray", "Will do. I'll check in when I'm done.")
+
+    call message("Kitsune", "Mmkay. Watch your back out there.")
+    call message("Stray", "I always do.")
+
     $ renpy.pause(0.5)
     call screen phone_reply("!logout", "kitprivatechat1")
 
 label kitprivatechat1:
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("You have logged out.")
-    $ renpy.pause()
-    hide screen phone_message_system
+    call message("system", "You have logged out.")
+
+    hide screeen phone_message_system
+
     hide phone
     with dissolve
 
@@ -1283,142 +813,43 @@ label chatlog2:
 
     show phone at phone_pickup
     with dissolve
-    $ renpy.pause()
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("#monitors: survivors chatroom. find the snacks and cherish them")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("Current Topic: Welcome to the end of the world!")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("You have now joined #monitors as @Stray.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "...and speak of the devil.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("I'll take that as a compliment.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "We know you do.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Hey hey~")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "Business as usual?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("sigh")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("you could say that")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Kit was right- there was some trouble out West. A horde was forming around some ripe ones.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "Gross :///")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "glad you're OK.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "Gotta keep an eye out.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("I always do~")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("In other news... got any info for me, Ohms?")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "Hm? Oh right")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "I was getting an update on the others.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "Still haven't heard from Realist. I'm getting a bit worried... but I'll keep you all updated.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "Picoco is fine. She's just busy with clearing out some new wards, but otherwise A-OK.")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "And Engrave said they'd be on later tonight...")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("@Engrave has entered #monitors.")
-    $ renpy.pause()
-    hide screen phone_message_system
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "or... now?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("Yo.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "o7")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", "yo")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Eng", "Hey hey")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Eng", "y'all miss me?")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me("It's only been 12 hours.")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Eng", "Enough time to see me dead and wanderin ;3~")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_me(">_>")
-    $ renpy.pause()
-    hide screen phone_message_me
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Ohms", ">_>")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Kitsune", "¯\_(-_-)_/¯  ")
-    $ renpy.pause()
-    hide screen phone_message_other
-    play sound "sfx/blop.mp3"
-    show screen phone_message_other("Eng", "¯\_(-_-)_/¯  ")
-    $ renpy.pause()
+
+    call message("system", "#monitors: survivors chatroom. find the snacks and cherish them")
+    call message("system", "Current Topic: Welcome to the end of the world!")
+    call message("system", "You have now joined #monitors as @Stray.")
+    call message("Ohms", "...and speak of the devil.")
+    call message("Stray", "I'll take that as a compliment.")
+    call message("Ohms", "We know you do.")
+    call message("Kitsune", "Hey hey~")
+    call message("Ohms", "Business as usual?")
+    call message("Stray", "sigh")
+    call message("Stray", "you could say that")
+    call message("Stray", "Kit was right- there was some trouble out West. A horde was forming around some ripe ones.")
+    call message("Kitsune", "Gross :///")
+    call message("Kitsune", "glad you're OK.")
+    call message("Ohms", "Gotta keep an eye out.")
+    call message("Stray", "I always do~")
+    call message("Stray", "In other news... got any info for me, Ohms?")
+    call message("Ohms", "Hm? Oh right")
+    call message("Ohms", "the status update on the others.")
+    call message("Ohms", "Still haven't heard from Realist. I'm getting a bit worried... but I'll keep you all updated.")
+    call message("Ohms", "Picoco is fine. She's just busy with clearing out some new wards, but otherwise A-OK.")
+    call message("Ohms", "And Engrave said they'd be on later tonight...")
+    call message("system", "@Engrave has entered #monitors.")
+    call message("Ohms", "or... now?")
+    call message("Stray", "Yo.")
+    call message("Kitsune", "o7")
+    call message("Ohms", "yo")
+    call message("Eng", "Hey hey")
+    call message("Eng", "y'all miss me?")
+    call message("Stray", "It's only been 12 hours.")
+    call message("Eng", "Enough time to see me dead and wanderin ;3~")
+    call message("Stray", ">_>")
+    call message("Ohms", ">_>")
+    call message("Kitsune", "¯\_(-_-)_/¯  ")
+    call message("Eng", "¯\_(-_-)_/¯  ")
+
+    
 
     nvl clear 
 

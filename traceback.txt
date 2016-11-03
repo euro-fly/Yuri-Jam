@@ -1,57 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00keymap.rpy", line 391, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 397, in <module>
-    renpy.take_screenshot((config.thumbnail_width, config.thumbnail_height))
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+  File "game/script.rpy", line 265, in script call
+    
+  File "game/script.rpy", line 150, in script
+    label start:
+SyntaxError: invalid syntax (game/script.rpy, line 150)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\bootstrap.py", line 277, in bootstrap
     renpy.main.main()
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\main.py", line 406, in main
-    if renpy.parser.report_parse_errors():
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\parser.py", line 2537, in report_parse_errors
-    renpy.display.error.report_parse_errors(full_text, error_fn)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\error.py", line 171, in report_parse_errors
-    error_fn = error_fn,
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\game.py", line 268, in invoke_in_new_context
-    return callable(*args, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\error.py", line 42, in call_exception_screen
-    return renpy.ui.interact(mouse="screen", type="screen", suppress_overlay=True, suppress_underlay=True)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ui.py", line 278, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2496, in interact
-    repeat, rv = self.interact_core(preloads=preloads, **kwargs)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 2825, in interact_core
-    renpy.exports.reload_script()
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\exports.py", line 1524, in reload_script
-    renpy.game.call_in_new_context("_save_reload_game")
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\game.py", line 316, in call_in_new_context
-    return renpy.execution.run_context(False)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\main.py", line 478, in main
+    run(restart)
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\main.py", line 144, in run
+    renpy.execution.run_context(True)
   File "D:\Renpy\renpy-6.99.11-sdk\renpy\execution.py", line 734, in run_context
     context.run()
-  File "renpy/common/00keymap.rpy", line 391, in script
-    python hide:
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 805, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\python.py", line 1641, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "renpy/common/00keymap.rpy", line 397, in <module>
-    renpy.take_screenshot((config.thumbnail_width, config.thumbnail_height))
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\exports.py", line 1479, in take_screenshot
-    renpy.game.interface.take_screenshot(scale, background=background)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\core.py", line 1956, in take_screenshot
-    surf = renpy.display.scale.smoothscale(surf, scale)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\scale.py", line 78, in real_smoothscale
-    dest = pgrender.surface_unscaled(size, src)
-  File "D:\Renpy\renpy-6.99.11-sdk\renpy\display\pgrender.py", line 113, in surface
-    surf = Surface((width + 4, height + 4), 0, sample)
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+  File "game/script.rpy", line 265, in script call
+    
+  File "game/script.rpy", line 150, in script
+    label start:
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\ast.py", line 1647, in execute
+    if renpy.python.py_eval(condition):
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\python.py", line 1669, in py_eval
+    code = py_compile(code, 'eval')
+  File "D:\Renpy\renpy-6.99.11-sdk\renpy\python.py", line 534, in py_compile
+    raise e
+SyntaxError: invalid syntax (game/script.rpy, line 150)
 
 Windows-8-6.2.9200
 Ren'Py 6.99.11.1749
- 
+A Cat With No Tail 1.0
