@@ -1533,11 +1533,8 @@ screen phone_message_other(who, what):
             xsize 200
             vbox:
                 style "phone_message_contents"
-                if who == "Ohms":
-                    add "images/avi/ohms_icon.png"
-                if who == "Kitsune":
-                    add "images/avi/kitsune_icon.png"
-
+                if who != "":
+                    add "images/avi/" + who.lower() + "_icon.png"
                 text what style "phone_message_what_other"
 
 screen phone_sticker_other(who, what):
@@ -1549,10 +1546,8 @@ screen phone_sticker_other(who, what):
             xsize 145
             vbox:
                 style "phone_message_contents"
-                if who == "ohms":
-                    add "images/avi/ohms_icon.png"
-                if who == "kitsune":
-                    add "images/avi/kitsune_icon.png"
+                if who != "":
+                    add "images/avi/" + who.lower() + "_icon.png"
                 if what != "":
                     add "images/stickers/" + what + ".png"
 

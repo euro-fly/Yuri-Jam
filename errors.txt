@@ -2,8 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 862: expected statement.
-    "The Omen's mouth was located on its stomach, lips pursed into a smile with shark-like incisors. It relished the taste of flesh as it smeared the blood onto its featureless face, trying to remember which orifice to eat from."\
-                                                                                                                                                                                                                                     ^
+File "game/script.rpy", line 1376: Line is indented, but the preceding show screen statement statement does not expect a block. Please check this line's indentation.
+    $ renpy.pause()
+    ^
 
 Ren'Py Version: Ren'Py 6.99.11.1749
