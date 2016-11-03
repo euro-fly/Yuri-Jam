@@ -144,7 +144,21 @@ transform midleft:
   
 transform midright:
   xpos 0.5
-  yalign 1.0
+  yalign 1.
+
+label message(who, what):
+    $ renpy.pause()
+    hide screen phone_message_other
+    hide screen phone_message_me
+    hide screen phone_message_system
+    play sound "sfx/blop.mp3"
+    if who == "Stray":
+        show screen phone_message_me(what)
+    elif who == "System"
+        show screen phone_message_system(what)
+    elif who != "":
+        show screen phone_message_other(who, what)
+    return
 
 # The game starts here.
 label start:
