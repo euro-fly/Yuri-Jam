@@ -151,13 +151,29 @@ label message(who, what):
     hide screen phone_message_other
     hide screen phone_message_me
     hide screen phone_message_system
+    hide screen phone_sticker_other
+    hide screen phone_sticker_me
     play sound "sfx/blop.mp3"
-    if who == "Stray":
+    if who.lower() == "stray":
         show screen phone_message_me(what)
-    elif who == "System"
+    elif who.lower() == "system":
         show screen phone_message_system(what)
     elif who != "":
         show screen phone_message_other(who, what)
+    return
+
+label sticker(who, what):
+    $ renpy.pause()
+    hide screen phone_message_other
+    hide screen phone_message_me
+    hide screen phone_message_system
+    hide screen phone_sticker_other
+    hide screen phone_sticker_me
+    play sound "sfx/blop.mp3"
+    if who.lower() == "stray":
+        show screen phone_sticker_me(what)
+    elif who != "":
+        show screen phone_sticker_other(who, what)
     return
 
 # The game starts here.
@@ -185,9 +201,9 @@ label start:
     $ renpy.pause(0.5)
     show phone at phone_pickup
     with dissolve
-    $ renpy.pause()
-    play sound "sfx/blop.mp3"
-    show screen phone_message_system("#monitors: survivors chatroom for general bullshit")
+    call message("system", "#monitors: survivors chatroom for general bullshit")
+    
+
     $ renpy.pause()
     hide screen phone_message_system
     play sound "sfx/blop.mp3"
