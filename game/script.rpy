@@ -743,7 +743,7 @@ label flashbackend:
     stop music fadeout 2.0
 
     "Turning my phone on, I plugged them in, and queued up my favorite jazz playlist to relax."
-    play music "bgm/Misty.mp3"
+    play music "bgm/Misty_pi.mp3"
 
     nvl clear
 
