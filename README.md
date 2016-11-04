@@ -7,3 +7,5 @@ There'll be a build up and running soon-ish, but for now, you can play the work-
 
 Script, Music, Art- @chamotea
 Programming, UI, SFX - @hacaplus
+BG Artist - Lucky
+Editor - Shadocchi
