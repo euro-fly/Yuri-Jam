@@ -69,18 +69,15 @@ define k = Character('Kitsune', color="#c8f4ff")
 define narrator = nvl_narrator
 
 image phone = "images/phone/bustedphone.png"
-image chatphone = "images/phone/phone-def.png"
-image lockphone = "images/phone/phone-default.png"
+
 image bg wasteland = "images/wasteland.jpg"
 image bg wip = "images/bg/bg wip.png"
 image bg computerroom = "images/bg/ComputerRoom.png"
 image bg computerblur = "images/bg/ComputerRoom-blur.png"
 image bg rooftop = "images/bg/Rooftop.png"
 image bg rooftopblur = "images/bg/Rooftop-blur.png"
-image eileen normal = "images/sylvie_normal.png"
-image eileen giggle = "images/sylvie_giggle.png"
-image eileen smile = "images/sylvie_smile.png"
-image eileen surprised = "images/sylvie_surprised.png"
+
+image bg black = "#000"
 
 image stray normal = "images/sprites/stra-default.png"
 image stray upset = "images/sprites/stra-upset.png"
@@ -91,16 +88,23 @@ image stray blush = "images/sprites/stra-smileblsh.png"
 image stray smile = "images/sprites/stra-smilepng.png"
 image stray uniform = "images/sprites/stra-uniform.png"
 
-image kitsune normal = "images/sprites/kit_default_phone.png"
+image kitsune normal = "images/sprites/kitsune-phone.png"
 image kitsune baited = "images/sprites/kit_baited_phone.png"
 image kitsune smile = "images/sprites/kit_smile_phone.png"
 image kitsune smug = "images/sprites/kit_smug_phone.png"
 image kitsune talk = "images/sprites/kit_talk_phone.png"
+image kitsune angry = "images/sprites/kit_angry_phone.png"
+
+image smartphone chat = "images/phone/phone-def.png"
+image smartphone lock = "images/phone/phone-default.png"
+image smartphone calling = "images/phone/phone-no glove.png"
 
 image bg zombies = "images/scenes/zombies_default.png"
 image bg zombiesblood = "images/scenes/zombies_blood.png"
 image bg moment = "images/scenes/moment.png"
 image bg snipe = "images/scenes/snipe.png"
+image bg together = "images/scenes/together.png"
+image bg credits = "images/scenes/credits-rooftop.png"
 
 
 
@@ -148,11 +152,7 @@ transform midright:
 
 label message(who, what):
     $ renpy.pause()
-    hide screen phone_message_other
-    hide screen phone_message_me
-    hide screen phone_message_system
-    hide screen phone_sticker_other
-    hide screen phone_sticker_me
+    call hide_all() from _call_hide_all
     $ renpy.pause(0.1)
     play sound "sfx/blop.mp3"
     if who.lower() == "stray":
@@ -165,17 +165,21 @@ label message(who, what):
 
 label sticker(who, what):
     $ renpy.pause()
-    hide screen phone_message_other
-    hide screen phone_message_me
-    hide screen phone_message_system
-    hide screen phone_sticker_other
-    hide screen phone_sticker_me
+    call hide_all() from _call_hide_all_1
     $ renpy.pause(0.1)
     play sound "sfx/blop.mp3"
     if who.lower() == "stray":
         show screen phone_sticker_me(what)
     elif who != "":
         show screen phone_sticker_other(who, what)
+    return
+
+label hide_all():
+    hide screen phone_message_other
+    hide screen phone_message_me
+    hide screen phone_message_system
+    hide screen phone_sticker_other
+    hide screen phone_sticker_me
     return
 
 # The game starts here.
@@ -197,7 +201,7 @@ label start:
     nvl clear
     window hide
 
-    show chatphone at left
+    show smartphone chat at left
     with dissolve 
     ## Add cellphone screen here
     $ renpy.pause(0.5)
@@ -205,16 +209,16 @@ label start:
     show phone at phone_pickup
     with dissolve
 
-    call message("system", "#monitors: survivors chatroom for general bullshit")
-    call message("system", "Current Topic: Welcome to the end of the world!")
-    call message("system", "You have now joined #monitors as @Stray.")
-    call message("system", "@Kitsune has entered #monitors.")
-    call message("Stray", "Hey")
-    call message("Stray", "How's it going?")
-    call message("Kitsune", "Hey hey~")
-    call message("Kitsune", "Just got up.")
-    call message("Stray", "Same")
-    call message("Stray", "Let's see how fucked we are today.")
+    call message("system", "#monitors: survivors chatroom for general bullshit") from _call_message
+    call message("system", "Current Topic: Welcome to the end of the world!") from _call_message_1
+    call message("system", "You have now joined #monitors as @Stray.") from _call_message_2
+    call message("system", "@Kitsune has entered #monitors.") from _call_message_3
+    call message("Stray", "Hey") from _call_message_4
+    call message("Stray", "How's it going?") from _call_message_5
+    call message("Kitsune", "Hey hey~") from _call_message_6
+    call message("Kitsune", "Just got up.") from _call_message_7
+    call message("Stray", "Same") from _call_message_8
+    call message("Stray", "Let's see how fucked we are today.") from _call_message_9
 
     $ renpy.pause(0.5)
     call screen phone_reply("!todaystatus", "notajump")
@@ -224,141 +228,141 @@ label notajump:
     hide screen phone_message_me
     $ renpy.pause(0.5)
 
-    call message("system", "Current temperature: 61F/16C. Cloudy with possible showers.")
-    call message("system", "Headline #6661: Year Five of the ongoing Omen crisis. Situation still grave, as usual. No progress on a cure.")
-    call message("system", "Attack reported in California at 1300 hours, with 10 dead.")
-    call message("system", "Refer to !pop for current population data.")
-    call message("Kitsune", "Looking grim~")
-    call message("Stray", "tell me something I don't know.")
-    call message("Kitsune", "wow, someone's full of sunshine today.")
-    call message("Kitsune", "feeling lonely?")
-    call message("Stray", "oh shut up.")
-    call message("Kitsune", "hmm")
-    call message("Kitsune", "well if it makes you feel any better")
-    call message("Kitsune", "I mapped out some of the uncharted waters around my place")
-    call message("Kitsune", "found an empty home")
-    call message("Kitsune", "WITH UNTOUCHED SNACKS")
-    call message("Stray", "AAAAAAA")
-    call message("Kitsune", "yep!!")
-    call sticker("Kitsune", "chips")
-    call message("Kitsune", "just to make you jealous.")
-    call message("Kitsune", "i had no idea salty chips could ever taste so sweet.")
-    call message("Kitsune", "found a can of pringles, but i've also got funyuns, BBQ chips, the works.")
-    call message("Stray", "haha i could certainly go for chips right now")
-    call message("Stray", "haven't had some in years, you lucky son of a gun")
-    call message("Kitsune", "huhu~ the only guns *i* have are fully-automatic.")
-    call message("Stray", "...")
-    call message("Kitsune", "but supplies-wise, i found some bottled water")
-    call message("Kitsune", "and... those types CDs you'd probably like i think")
-    call message("Stray", "Hm?")
-    call message("Kitsune", "oh, mostly old jazz stuff")
-    call sticker("Kitsune", "jazz")
-    call message("Kitsune", "like, we've got... one of em was by Miles something or other.")
-    call message("Kitsune", "then you had the... cannon ball?")
-    call message("Kitsune", "look, i don't really know")
-    call message("Kitsune", "it seemed like it was your kinda thing is all")
-    call message("Stray", "Yeah yeah.")
-    call message("Kitsune", "How are things on your end?")
-    call message("Stray", "Hmm")
-    call message("Stray", "Went up top today to do a surveillance sweep, all clear so far.")
-    call message("Stray", "Weather is *still* foggy as shit.")
-    call message("Stray", "Omens are gathering in the usual spots, so I picked a number of them off today.")
-    call message("Kitsune", "My hard little worker~")
-    call message("Stray", ">_>")
-    call message("system", "&Ohms has entered #monitors.")
-    call message("Kitsune", "Oh hey Ohms! o/")
-    call message("Stray", "yo")
-    call message("Ohms", "You kids. Flirting while I'm not around.")
-    call message("Stray", "uuuuuugh")
-    call message("Kitsune", "hahahahaha")
-    call message("Ohms", "Anyways")
-    call message("Ohms", "how goes it?")
-    call message("Kitsune", "Oh, Stray here was just telling me of her heroic tales")
-    call message("Kitsune", "Killing Omens left and right on surveillance duty")
-    call message("Kitsune", "pls flex more, my hero~")
-    call message("Stray", "Save me.")
-    call message("Ohms", "lol. your problem not mine.")
-    call message("Stray", "...")
-    call message("Stray", "how have you been, ohms?")
-    call message("Ohms", "eh, same old same old")
-    call message("Ohms", "stayed holed-up. played some net games.")
-    call message("Ohms", "just shut-in things.")
-    call message("Ohms", "I should prob go out and stretch my legs, do some killing.")
-    call message("Ohms", "But. You know how it is where I am.")
-    call message("Stray", "mm.")
-    call message("Ohms", "er")
-    call message("Ohms", "doing okay there, stray?")
-    call message("Stray", "oh")
-    call message("Stray", "my bad. kit was just showing off her snack haul.")
-    call message("Stray", "goddamn.")
-    call message("Ohms", "oh what")
-    call message("Ohms", "lmao I see it")
-    call message("Ohms", "daaaaaamn. funyuns, too?")
-    call message("Kitsune", "damn straight!")
-    call message("Ohms", "eyyyyy")
-    call message("Stray", "...")
-    call message("Stray", "I hope they're SOGGY AS SHIT.")
-    call message("Kitsune", "wow rude")
-    call message("Ohms", "^")
-    call message("Ohms", "but that aside. how goes surveillance, Stray? going out again today?")
-    call message("Stray", "yeah. most likely.")
-    call message("Stray", "the west wing still needs to be secured.")
-    call message("Ohms", "sounds rough.")
-    call message("Stray", "eh. it is what it is.")
-    call message("Kitsune", "not just strong, but humble too~ what a hero.")
-    call message("Stray", ">________>")
-    call message("Ohms", "ah, yes. this is what i am here for.")
-    call message("Stray", "Ugh not you too?")
-    call message("Ohms", "hey, look man")
-    call message("Ohms", "it's not like I have anything better to do")
-    call message("Ohms", "Kitsune- oh btw")
-    call message("Kitsune", "what's up?")
-    call message("Ohms", "event's up. how far have you gotten?")
-    call message("Kitsune", "OH")
-    call message("Kitsune", "Shit, that's TODAY?")
-    call message("Ohms", "yep.")
-    call message("Ohms", "better get your ass back in grinding hell")
-    call message("Kitsune", "FFFFFFFFFfffffff")
-    call message("Kitsune", "fffffff")
-    call message("Kitsune", "fff")
-    call message("Stray", "Yeah no")
-    call message("Stray", "I can't believe you guys STILL play those mobile games despite the apocalypse")
-    call message("Kitsune", "IT'S WHAT I LIVE FOR.")
-    call message("Ohms", "SAME.")
-    call message("Stray", "Kids today.")
-    call message("Kitsune", "omg like you're soooo old")
-    call message("Stray", "Look")
-    call sticker("stray","ps2")
-    call message("Stray", "There's a working PS2 and a backlog to last you DAYS")
-    call message("Kitsune", "ok but zzzz")
-    call message("Kitsune", "you should be playing this so we can play together")
-    call message("Stray", "Pass.")
-    call message("Kitsune", ":'(")
-    call message("Ohms", "rip")
-    call message("Stray", "ANYWAY.")
-    call message("Stray", "Ohms- how's the rest of the chat? You did some maintenance, right?")
-    call message("Ohms", "Oh yeah, lemme check")
-    call message("Ohms", "!userstats")
-    call message("system", "Current users: 3. (@Stray, @Kitsune, &Ohms)")
-    call message("system", "The most users logged in was 6. (8d ago)")
-    call message("system", "Other users: @Realist (last login 7d ago), @Engrave (last login 12h ago), @Picoco (last login 3h ago)")
-    call message("Stray", "jesus")
-    call message("Ohms", "we better check on real. let's hope he's ok.")
-    call message("Stray", "Alright. Keep us posted.")
-    call message("Ohms", "roger that. later o7")
-    call message("system", "&Ohms has left #monitors.")
-    call message("Kitsune", "maaaaaaaan. I can't believe I forgot the event was today T_T")
-    call message("Stray", "lol")
-    call message("Kitsune", "you just don't get it. the struggle is real, ok")
-    call message("Stray", "the struggle... to live?")
-    call message("Kitsune", "the struggle to get the girl you want")
-    call message("Stray", "Tell me about it.")
-    call message("Kitsune", "it's certainly a good way to pass time ;3")
-    call message("Stray", "I'll bet.")
-    call message("Stray", "I still need to finish my surveillance run though.")
-    call message("Kitsune", "roger that! take care out there.")
-    call message("Kitsune", "I demand a full report on my desk when you're back, soldier! o7")
-    call message("Stray", "haha, copy that.")
+    call message("system", "Current temperature: 61F/16C. Cloudy with possible showers.") from _call_message_10
+    call message("system", "Headline #6661: Year Five of the ongoing Omen crisis. Situation still grave, as usual. No progress on a cure.") from _call_message_11
+    call message("system", "Attack reported in California at 1300 hours, with 10 dead.") from _call_message_12
+    call message("system", "Refer to !pop for current population data.") from _call_message_13
+    call message("Kitsune", "Looking grim~") from _call_message_14
+    call message("Stray", "tell me something I don't know.") from _call_message_15
+    call message("Kitsune", "wow, someone's full of sunshine today.") from _call_message_16
+    call message("Kitsune", "feeling lonely?") from _call_message_17
+    call message("Stray", "oh shut up.") from _call_message_18
+    call message("Kitsune", "hmm") from _call_message_19
+    call message("Kitsune", "well if it makes you feel any better") from _call_message_20
+    call message("Kitsune", "I mapped out some of the uncharted waters around my place") from _call_message_21
+    call message("Kitsune", "found an empty home") from _call_message_22
+    call message("Kitsune", "WITH UNTOUCHED SNACKS") from _call_message_23
+    call message("Stray", "AAAAAAA") from _call_message_24
+    call message("Kitsune", "yep!!") from _call_message_25
+    call sticker("Kitsune", "chips") from _call_sticker
+    call message("Kitsune", "just to make you jealous.") from _call_message_26
+    call message("Kitsune", "i had no idea salty chips could ever taste so sweet.") from _call_message_27
+    call message("Kitsune", "found a can of pringles, but i've also got funyuns, BBQ chips, the works.") from _call_message_28
+    call message("Stray", "haha i could certainly go for chips right now") from _call_message_29
+    call message("Stray", "haven't had some in years, you lucky son of a gun") from _call_message_30
+    call message("Kitsune", "huhu~ the only guns *i* have are fully-automatic.") from _call_message_31
+    call message("Stray", "...") from _call_message_32
+    call message("Kitsune", "but supplies-wise, i found some bottled water") from _call_message_33
+    call message("Kitsune", "and... those types CDs you'd probably like i think") from _call_message_34
+    call message("Stray", "Hm?") from _call_message_35
+    call message("Kitsune", "oh, mostly old jazz stuff") from _call_message_36
+    call sticker("Kitsune", "jazz") from _call_sticker_1
+    call message("Kitsune", "like, we've got... one of em was by Miles something or other.") from _call_message_37
+    call message("Kitsune", "then you had the... cannon ball?") from _call_message_38
+    call message("Kitsune", "look, i don't really know") from _call_message_39
+    call message("Kitsune", "it seemed like it was your kinda thing is all") from _call_message_40
+    call message("Stray", "Yeah yeah.") from _call_message_41
+    call message("Kitsune", "How are things on your end?") from _call_message_42
+    call message("Stray", "Hmm") from _call_message_43
+    call message("Stray", "Went up top today to do a surveillance sweep, all clear so far.") from _call_message_44
+    call message("Stray", "Weather is *still* foggy as shit.") from _call_message_45
+    call message("Stray", "Omens are gathering in the usual spots, so I picked a number of them off today.") from _call_message_46
+    call message("Kitsune", "My hard little worker~") from _call_message_47
+    call message("Stray", ">_>") from _call_message_48
+    call message("system", "&Ohms has entered #monitors.") from _call_message_49
+    call message("Kitsune", "Oh hey Ohms! o/") from _call_message_50
+    call message("Stray", "yo") from _call_message_51
+    call message("Ohms", "You kids. Flirting while I'm not around.") from _call_message_52
+    call message("Stray", "uuuuuugh") from _call_message_53
+    call message("Kitsune", "hahahahaha") from _call_message_54
+    call message("Ohms", "Anyways") from _call_message_55
+    call message("Ohms", "how goes it?") from _call_message_56
+    call message("Kitsune", "Oh, Stray here was just telling me of her heroic tales") from _call_message_57
+    call message("Kitsune", "Killing Omens left and right on surveillance duty") from _call_message_58
+    call message("Kitsune", "pls flex more, my hero~") from _call_message_59
+    call message("Stray", "Save me.") from _call_message_60
+    call message("Ohms", "lol. your problem not mine.") from _call_message_61
+    call message("Stray", "...") from _call_message_62
+    call message("Stray", "how have you been, ohms?") from _call_message_63
+    call message("Ohms", "eh, same old same old") from _call_message_64
+    call message("Ohms", "stayed holed-up. played some net games.") from _call_message_65
+    call message("Ohms", "just shut-in things.") from _call_message_66
+    call message("Ohms", "I should prob go out and stretch my legs, do some killing.") from _call_message_67
+    call message("Ohms", "But. You know how it is where I am.") from _call_message_68
+    call message("Stray", "mm.") from _call_message_69
+    call message("Ohms", "er") from _call_message_70
+    call message("Ohms", "doing okay there, stray?") from _call_message_71
+    call message("Stray", "oh") from _call_message_72
+    call message("Stray", "my bad. kit was just showing off her snack haul.") from _call_message_73
+    call message("Stray", "goddamn.") from _call_message_74
+    call message("Ohms", "oh what") from _call_message_75
+    call message("Ohms", "lmao I see it") from _call_message_76
+    call message("Ohms", "daaaaaamn. funyuns, too?") from _call_message_77
+    call message("Kitsune", "damn straight!") from _call_message_78
+    call message("Ohms", "eyyyyy") from _call_message_79
+    call message("Stray", "...") from _call_message_80
+    call message("Stray", "I hope they're SOGGY AS SHIT.") from _call_message_81
+    call message("Kitsune", "wow rude") from _call_message_82
+    call message("Ohms", "^") from _call_message_83
+    call message("Ohms", "but that aside. how goes surveillance, Stray? going out again today?") from _call_message_84
+    call message("Stray", "yeah. most likely.") from _call_message_85
+    call message("Stray", "the west wing still needs to be secured.") from _call_message_86
+    call message("Ohms", "sounds rough.") from _call_message_87
+    call message("Stray", "eh. it is what it is.") from _call_message_88
+    call message("Kitsune", "not just strong, but humble too~ what a hero.") from _call_message_89
+    call message("Stray", ">________>") from _call_message_90
+    call message("Ohms", "ah, yes. this is what i am here for.") from _call_message_91
+    call message("Stray", "Ugh not you too?") from _call_message_92
+    call message("Ohms", "hey, look man") from _call_message_93
+    call message("Ohms", "it's not like I have anything better to do") from _call_message_94
+    call message("Ohms", "Kitsune- oh btw") from _call_message_95
+    call message("Kitsune", "what's up?") from _call_message_96
+    call message("Ohms", "event's up. how far have you gotten?") from _call_message_97
+    call message("Kitsune", "OH") from _call_message_98
+    call message("Kitsune", "Shit, that's TODAY?") from _call_message_99
+    call message("Ohms", "yep.") from _call_message_100
+    call message("Ohms", "better get your ass back in grinding hell") from _call_message_101
+    call message("Kitsune", "FFFFFFFFFfffffff") from _call_message_102
+    call message("Kitsune", "fffffff") from _call_message_103
+    call message("Kitsune", "fff") from _call_message_104
+    call message("Stray", "Yeah no") from _call_message_105
+    call message("Stray", "I can't believe you guys STILL play those mobile games despite the apocalypse") from _call_message_106
+    call message("Kitsune", "IT'S WHAT I LIVE FOR.") from _call_message_107
+    call message("Ohms", "SAME.") from _call_message_108
+    call message("Stray", "Kids today.") from _call_message_109
+    call message("Kitsune", "omg like you're soooo old") from _call_message_110
+    call message("Stray", "Look") from _call_message_111
+    call sticker("stray","ps2") from _call_sticker_2
+    call message("Stray", "There's a working PS2 and a backlog to last you DAYS") from _call_message_112
+    call message("Kitsune", "ok but zzzz") from _call_message_113
+    call message("Kitsune", "you should be playing this so we can play together") from _call_message_114
+    call message("Stray", "Pass.") from _call_message_115
+    call message("Kitsune", ":'(") from _call_message_116
+    call message("Ohms", "rip") from _call_message_117
+    call message("Stray", "ANYWAY.") from _call_message_118
+    call message("Stray", "Ohms- how's the rest of the chat? You did some maintenance, right?") from _call_message_119
+    call message("Ohms", "Oh yeah, lemme check") from _call_message_120
+    call message("Ohms", "!userstats") from _call_message_121
+    call message("system", "Current users: 3. (@Stray, @Kitsune, &Ohms)") from _call_message_122
+    call message("system", "The most users logged in was 6. (8d ago)") from _call_message_123
+    call message("system", "Other users: @Realist (last login 7d ago), @Engrave (last login 12h ago), @Picoco (last login 3h ago)") from _call_message_124
+    call message("Stray", "jesus") from _call_message_125
+    call message("Ohms", "we better check on real. let's hope he's ok.") from _call_message_126
+    call message("Stray", "Alright. Keep us posted.") from _call_message_127
+    call message("Ohms", "roger that. later o7") from _call_message_128
+    call message("system", "&Ohms has left #monitors.") from _call_message_129
+    call message("Kitsune", "maaaaaaaan. I can't believe I forgot the event was today T_T") from _call_message_130
+    call message("Stray", "lol") from _call_message_131
+    call message("Kitsune", "you just don't get it. the struggle is real, ok") from _call_message_132
+    call message("Stray", "the struggle... to live?") from _call_message_133
+    call message("Kitsune", "the struggle to get the girl you want") from _call_message_134
+    call message("Stray", "Tell me about it.") from _call_message_135
+    call message("Kitsune", "it's certainly a good way to pass time ;3") from _call_message_136
+    call message("Stray", "I'll bet.") from _call_message_137
+    call message("Stray", "I still need to finish my surveillance run though.") from _call_message_138
+    call message("Kitsune", "roger that! take care out there.") from _call_message_139
+    call message("Kitsune", "I demand a full report on my desk when you're back, soldier! o7") from _call_message_140
+    call message("Stray", "haha, copy that.") from _call_message_141
 
     $ renpy.pause(0.5)
     call screen phone_reply("!logout", "notajump2")
@@ -367,7 +371,7 @@ label notajump2:
 
     hide screen phone_message_me
     hide phone
-    hide chatphone
+    hide smartphone chat
 
     play music "bgm/waiting.mp3"
 
@@ -491,12 +495,12 @@ label notajump2:
 
     $ renpy.pause(0.5)
 
-    show lockphone at left
+    show smartphone lock at left
     with dissolve
 
     "I sighed again, looking at the screen of my locked phone. Who knows if I'll even live to see the next day?"
 
-    hide lockphone
+    hide smartphone lock
 
     play sound "sfx/equip.mp3"
 
@@ -505,7 +509,7 @@ label notajump2:
     nvl clear
 
     show bg rooftop
-    with fade
+    with Fade(0.5,1.0,0.5)
 
     $ double_vision_on("rooftop")
 
@@ -525,7 +529,7 @@ label notajump2:
 
     "I jolted as I felt a buzz in my pocket."
 
-    show chatphone at left
+    show smartphone chat at left
     with dissolve
 
     s "Ah..."
@@ -544,50 +548,51 @@ label notajump2:
     with dissolve
     $ renpy.pause()
 
-    call message("system", "You have joined the private chat with @Kitsune as @Stray.")
+    call message("system", "You have joined the private chat with @Kitsune as @Stray.") from _call_message_142
 
 
-    call message("Stray", "What's up? Kind of busy.")
-    call message("Kitsune", "Sorry, it's just")
+    call message("Stray", "What's up? Kind of busy.") from _call_message_143
+    call message("Kitsune", "Sorry, it's just") from _call_message_144
 
-    call message("Kitsune", "I was looking at the monitors")
+    call message("Kitsune", "I was looking at the monitors") from _call_message_145
 
-    call message("Kitsune", "I couldn't help but notice an unusual amount of Omens in the west wing you were about to check out.")
-    call message("Stray", "Hmm. It's a little strange to hear you speaking seriously for once.")
+    call message("Kitsune", "I couldn't help but notice an unusual amount of Omens in the west wing you were about to check out.") from _call_message_146
+    call message("Stray", "Hmm. It's a little strange to hear you speaking seriously for once.") from _call_message_147
 
-    call message("Kitsune", "Can it :/")
+    call message("Kitsune", "Can it :/") from _call_message_148
 
-    call message("Kitsune", "you know I worry.")
+    call message("Kitsune", "you know I worry.") from _call_message_149
 
-    call message("Stray", "Yeah yeah.")
-    call message("Stray", "Thanks for the heads up")
-    call message("Stray", "Any more reports before I close the app for good?")
-    call message("Stray", "You know sudden alerts make me uneasy.")
-    call message("Kitsune", "Hmm... no")
+    call message("Stray", "Yeah yeah.") from _call_message_150
+    call message("Stray", "Thanks for the heads up") from _call_message_151
+    call message("Stray", "Any more reports before I close the app for good?") from _call_message_152
+    call message("Stray", "You know sudden alerts make me uneasy.") from _call_message_153
+    call message("Kitsune", "Hmm... no") from _call_message_154
 
-    call message("Kitsune", "Just, be careful ok? >_>")
-    call message("Stray", "Will do. I'll check in when I'm done.")
+    call message("Kitsune", "Just, be careful ok? >_>") from _call_message_155
+    call message("Stray", "Will do. I'll check in when I'm done.") from _call_message_156
 
-    call message("Kitsune", "Mmkay. Watch your back out there.")
-    call message("Stray", "I always do.")
+    call message("Kitsune", "Mmkay. Watch your back out there.") from _call_message_157
+    call message("Stray", "I always do.") from _call_message_158
 
     $ renpy.pause(0.5)
     call screen phone_reply("!logout", "kitprivatechat1")
 
 label kitprivatechat1:
-    call message("system", "You have logged out.")
-
-    hide screeen phone_message_system
+    call message("system", "You have logged out.") from _call_message_159
+    $ renpy.pause()
+    $ renpy.pause(0.1)
+    hide screen phone_message_system
 
     hide phone
     with dissolve
 
     $renpy.pause(0.5)
 
-    hide chatphone
-    show lockphone at left
+    hide smartphone chat
+    show smartphone lock at left
     "This time, I made sure to turn off my phone and set it in my pocket."
-    hide lockphone
+    hide smartphone lock
     "I was glad Kitsune was worried, but any more sudden buzzes and I was going to lose my shit on this roof."
     "It {i}was{/i} sweet knowing that she seemed genuinely concerned, though."
 
@@ -802,11 +807,12 @@ label flashbackend:
 
 label chatlog2:
     show bg computerroom
-    with fade
+    with Fade(0.5, 1.0, 0.5)
 
     $ double_vision_on("computerroom")
 
-    show chatphone
+    show smartphone chat at left
+    with dissolve
 
     "I grabbed my gear and headed back down to my room."
     "Munching on my granola bar as I walked, I started up the chat app on my phone."
@@ -814,50 +820,574 @@ label chatlog2:
     show phone at phone_pickup
     with dissolve
 
-    call message("system", "#monitors: survivors chatroom. find the snacks and cherish them")
-    call message("system", "Current Topic: Welcome to the end of the world!")
-    call message("system", "You have now joined #monitors as @Stray.")
-    call message("Ohms", "...and speak of the devil.")
-    call message("Stray", "I'll take that as a compliment.")
-    call message("Ohms", "We know you do.")
-    call message("Kitsune", "Hey hey~")
-    call message("Ohms", "Business as usual?")
-    call message("Stray", "sigh")
-    call message("Stray", "you could say that")
-    call message("Stray", "Kit was right- there was some trouble out West. A horde was forming around some ripe ones.")
-    call message("Kitsune", "Gross :///")
-    call message("Kitsune", "glad you're OK.")
-    call message("Ohms", "Gotta keep an eye out.")
-    call message("Stray", "I always do~")
-    call message("Stray", "In other news... got any info for me, Ohms?")
-    call message("Ohms", "Hm? Oh right")
-    call message("Ohms", "the status update on the others.")
-    call message("Ohms", "Still haven't heard from Realist. I'm getting a bit worried... but I'll keep you all updated.")
-    call message("Ohms", "Picoco is fine. She's just busy with clearing out some new wards, but otherwise A-OK.")
-    call message("Ohms", "And Engrave said they'd be on later tonight...")
-    call message("system", "@Engrave has entered #monitors.")
-    call message("Ohms", "or... now?")
-    call message("Stray", "Yo.")
-    call message("Kitsune", "o7")
-    call message("Ohms", "yo")
-    call message("Eng", "Hey hey")
-    call message("Eng", "y'all miss me?")
-    call message("Stray", "It's only been 12 hours.")
-    call message("Eng", "Enough time to see me dead and wanderin ;3~")
-    call message("Stray", ">_>")
-    call message("Ohms", ">_>")
-    call message("Kitsune", "¯\_(-_-)_/¯  ")
-    call message("Eng", "¯\_(-_-)_/¯  ")
+    call message("system", "#monitors: survivors chatroom. find the snacks and cherish them") from _call_message_160
+    call message("system", "Current Topic: Welcome to the end of the world!") from _call_message_161
+    call message("system", "You have now joined #monitors as @Stray.") from _call_message_162
+    call message("Ohms", "...and speak of the devil.") from _call_message_163
+    call message("Stray", "I'll take that as a compliment.") from _call_message_164
+    call message("Ohms", "We know you do.") from _call_message_165
+    call message("Kitsune", "Hey hey~") from _call_message_166
+    call message("Ohms", "Business as usual?") from _call_message_167
+    call message("Stray", "sigh") from _call_message_168
+    call message("Stray", "you could say that") from _call_message_169
+    call message("Stray", "Kit was right- there was some trouble out West. A horde was forming around some ripe ones.") from _call_message_170
+    call message("Kitsune", "Gross :///") from _call_message_171
+    call message("Kitsune", "glad you're OK.") from _call_message_172
+    call message("Ohms", "Gotta keep an eye out.") from _call_message_173
+    call message("Stray", "I always do~") from _call_message_174
+    call message("Stray", "In other news... got any info for me, Ohms?") from _call_message_175
+    call message("Ohms", "Hm? Oh right") from _call_message_176
+    call message("Ohms", "the status update on the others.") from _call_message_177
+    call message("Ohms", "Still haven't heard from Realist. I'm getting a bit worried... but I'll keep you all updated.") from _call_message_178
+    call message("Ohms", "Picoco is fine. She's just busy with clearing out some new wards, but otherwise A-OK.") from _call_message_179
+    call message("Ohms", "And Engrave said they'd be on later tonight...") from _call_message_180
+    call message("system", "@Engrave has entered #monitors.") from _call_message_181
+    call message("Ohms", "or... now?") from _call_message_182
+    call message("Stray", "Yo.") from _call_message_183
+    call message("Kitsune", "o7") from _call_message_184
+    call message("Ohms", "yo") from _call_message_185
+    call message("Eng", "Hey hey") from _call_message_186
+    call message("Eng", "y'all miss me?") from _call_message_187
+    call message("Stray", "It's only been 12 hours.") from _call_message_188
+    call message("Eng", "Enough time to see me dead and wanderin ;3~") from _call_message_189
+    call message("Stray", ">_>") from _call_message_190
+    call message("Ohms", ">_>") from _call_message_191
+    call message("Kitsune", "¯\_(-_-)_/¯  ") from _call_message_192
+    call message("Eng", "¯\_(-_-)_/¯  ") from _call_message_193
+    call message("Eng", "Seriously though, my bad") from _call_message_194
+    call message("Eng", "I had to thin out the Omens near my city's entrance") from _call_message_195
+    call message("Eng", "What a major pain that was") from _call_message_196
+    call message("Eng", "Really shoulda checked in sooner") from _call_message_197
+    call message("Stray", "You alright?") from _call_message_198
+    call message("Eng", "Heh, yeah") from _call_message_199
+    call message("Eng", "It's just not something I want to deal with on the reg") from _call_message_200
+    call message("Stray", "Yeah, I'm concerned that hordes are forming more frequently it seems") from _call_message_201
+    call message("Stray", "We'll def have to keep a bigger eye out for more survivors") from _call_message_202
+    call message("Stray", "Most of em don't know how to maneuver about the cities, so we should try to get to them first") from _call_message_203
+    call message("Ohms", "Agreed") from _call_message_204
+    call message("Ohms", "Kit, could you set up a frequency that's easy to access?") from _call_message_205
+    call message("Ohms", "Easier to give out information that way, if they happen to wander into the cities") from _call_message_206
+    call message("Kitsune", "On it") from _call_message_207
+    call message("Kitsune", "I'll send out the frequency info when it's up.") from _call_message_208
+    call message("Stray", "Actually getting work done in chat") from _call_message_209
+    call message("Stray", "*slow claps*") from _call_message_210
+    call message("Eng", "ikr?") from _call_message_211
+    call message("Kitsune", "ugh, you guys treat me like such a child") from _call_message_212
+    call message("Eng", "but you aaaaare") from _call_message_213
+    call message("Eng", "Our lil baby <3") from _call_message_214
+    call message("Ohms", "Baby Kit.") from _call_message_215
+    call message("Stray", "I can't disagree.") from _call_message_216
+    call message("Kitsune", "just so you all know") from _call_message_217
+    call message("Kitsune", "I'm giving you all the bird right now") from _call_message_218
+    call message("Eng", "Lil baby's first swear!") from _call_message_219
+    call message("Eng", "I'm...") from _call_message_220
+    call message("Eng", "I'm so proud *sheds tear*") from _call_message_221
+    call message("Kitsune", ":<<<<<") from _call_message_222
+    call message("Ohms", "lol") from _call_message_223
+    call message("Stray", "lol") from _call_message_224
+    call message("Eng", "In my defense") from _call_message_225
+    call message("Eng", "can you honestly say you *aren't* grinding out the current idol event at this very instant?") from _call_message_226
+    call message("Kitsune", "...no comment") from _call_message_227
+    call message("Ohms", "At least *I* finished my run. I'm sleeping for days.") from _call_message_228
+    call message("Stray", "Well I mean") from _call_message_229
+    call message("Stray", "As long as she can multitask") from _call_message_230
+    call message("Stray", "I won't complain") from _call_message_231
+    call message("Stray", "At least she hasn't somersaulted into the toilet, yet.") from _call_message_232
+    call message("Stray", "I still can't believe how you even managed it, Engrave.") from _call_message_233
+    call message("Eng", "Look, man, it made for a good story at the time.") from _call_message_234
+    call message("Stray", "I see we're setting only the highest standards.") from _call_message_235
+    call message("Kitsune", "lolololol") from _call_message_236
+    call message("Eng", "Don't I always~?") from _call_message_237
+    call message("Eng", "Anyway, I'm out") from _call_message_238
+    call message("Eng", "Back to work, peace o7") from _call_message_239
+    call message("Stray", "o7") from _call_message_240
+    call message("Kitsune", "o7") from _call_message_241
+    call message("Ohms", "o7") from _call_message_242
+    call message("System", "@Engrave has signed out of #monitors.") from _call_message_243
+    call message("Ohms", "I'm out, too") from _call_message_244
+    call message("Ohms", "gotta get some sleep!") from _call_message_245
+    call message("Ohms", "cya o/") from _call_message_246
+    call message("Stray", "Later o/") from _call_message_247
+    call message("Kitsune", "bye~") from _call_message_248
+    call message("System", "&Ohms has signed out of #monitors.") from _call_message_249
+    call message("Kitsune", "Hey") from _call_message_250
+    call message("Kitsune", "I'mma message you") from _call_message_251
+    call message("Stray", "kk") from _call_message_252
+    jump flashbacktower
 
-    
+label flashbacktower:
+
+    stop music fadeout 2.0
+    $ renpy.pause(2.0)
+    play music "bgm/waiting.mp3"
+
+    call message("System", "You have joined the private chat with @Kitsune as @Stray.") from _call_message_253
+    call message("Stray", "What's up?") from _call_message_254
+    call message("Kitsune", "What were you saying about that horde earlier?") from _call_message_255
+    call message("Kitsune", "Like") from _call_message_256
+    call message("Kitsune", "Do you want to talk about it?") from _call_message_257
+    call message("Kitsune", "It's just. I saw it on my monitor. It could have turned into a total shitstorm if you hadn't dealt with it asap.") from _call_message_258
+    call message("Stray", "mm") from _call_message_259
+    call message("Kitsune", "It's okay") from _call_message_260
+    call message("Kitsune", "You don't have to downplay anything") from _call_message_261
+    call message("Kitsune", "We all know how shitty it can get out there") from _call_message_262
+    call message("Kitsune", "I... I can call you.") from _call_message_263
+    call message("Kitsune", "Can I call you? So we can talk?") from _call_message_264
+    call message("Stray", "hahaha") from _call_message_265
+    call message("Kitsune", "w-what >>;;") from _call_message_266
+    call message("Stray", "Nah it's nothing. Only teasing") from _call_message_267
+    call message("Stray", "I'd... like that, though") from _call_message_268
+    call message("Kitsune", "kk. gimme a few, brb.") from _call_message_269
+    call message("Stray", "aight") from _call_message_270
+
+    call hide_all() from _call_hide_all_2
+
+    nvl clear
+
+    hide smartphone
+    hide phone
+
+    stop music fadeout 2.0
+    $ renpy.pause(2.0)
+    play music "bgm/main stay.mp3"
+
+    show stray normal
+    with dissolve
+
+    "Sometimes, after a chat with the team, or after a particularly long day, Kitsune would ask me in a private message if I was doing alright."
+
+    show smartphone lock at left behind stray
+    with dissolve
+
+    show stray blush
+
+    "I stared blankly at my phone, feeling my mouth form into a smile."
+    "Days like this did tend to take their toll on me, as I'm sure it did on everyone."
+    "It was just nice, knowing I had someone close to me, someone who knew me before all this happened."
+
+    show stray normal
+
+    hide smartphone
+    with dissolve
+
+    nvl clear
+
+    "I scratched at the scar on my face absentmindedly."
+    "The nerves were all damaged, so it felt like I was just touching an accessory attached to my face."
+    "It was a nervous habit I developed after the accident."
+    "I tended to do it when I was unsure of what to do with myself."
 
     nvl clear 
 
+    "Shortly after Kitsune and I had sort-of-kind-of formed a friendship, I was sent off to help escort a cargo of rations to a nearby survivor camp."
+    "It seemed simple enough: I was to hang close by at a vantage point, and make sure the cargo was free of Omens and would-be scavengers."
+    "Near the turning point of the mission, things went to hell real quick. A large group of raiders surrounded the vehicle."
+    "Despite my warnings... the convoy was overrun. But not before the truck hit a land mine. The explosion took the truck and the raiders both."
+
+    nvl clear
+
+    "I scratched again at my scar."
+
+    nvl clear
+
+    show stray frown
+
+    "I was high up, on an abandoned water tower at the time."
+    "All things considered, I got out lucky- it only cost me the side of my face. No one else survived."
+    "My superiors realized how much of a disaster this mission turned out to be as they rushed me to the surgical unit."
+    "I couldn't stop clawing at my seared face in pain."
+
+    nvl clear
+
+    "When Kitsune saw just how bad my wounds were, she rushed over, practically wrestling with the medical team just to stay at my side."
+    "{i}Why did she care so much,{/i} I wondered, as I drifted in and out of consciousness."
+
+    nvl clear
+
+    "After the surgery, my face was a bandaged mess. I could still feel the warmth of Kitsune's hand in mine on the hospital bed."
+
+    show stray blush
+
+    "I tried my hardest not to smile."
+
+    jump kit_call
+
+label kit_call:
 
 
-##Hide cellphone screen
+    hide stray
+    stop music fadeout 2.0
+    $ renpy.pause(2.0)
+    play music "bgm/thumps.mp3"
+    play sound "sfx/vibrate.mp3"
+    $ renpy.pause(0.5)
 
+    show smartphone calling at left
+    with dissolve
+
+    "My phone began to vibrate with the obnoxious ringtone Kitsune had set on my phone years ago."
+    "It sounded like... some god-awful anime house mash-up with a cat's screams mixed in."
+    "If it ever went off, and the Omens heard it... at least I'd die of embarrassment before they could kill me."
+
+    nvl clear
+    show stray normal
+    with dissolve
+
+    show stray normal at midleft
+    with move
+
+    hide smartphone
+    with dissolve
+
+    $ renpy.pause(0.5)
+
+    show kitsune normal at midright
+    with dissolve
+
+    k "Hey hey! Sorry about the call quality. It's probably crap."
+    k "The look on your face tells me you haven't changed the work of art I set as your ringtone."
+
+    show stray frown
+
+    s "That's... one way of looking at it."
+    k "Hmhmm~ Anyway. Tell me about what happened today."
+
+    show stray normal
+
+    "I gave Kitsune the gist of what had happened today, leaving out the parts where I'd lost my nerve."
+    "I figured she picked up on it all the same, if her frowns were anything to go by."
+
+    nvl clear
+
+    k "Well... I hope you're doing better now."
+    s "I am, thanks. I mean, I know I tend to be pretty stoic most of the-"
+
+    show kitsune angry
+
+    k "{i}All{/i} of the time."
+    s "Right, but... trust me when I say I feel better, so..."
+
+    show stray frown
+
+    s "Sorry..."
+
+    show kitsune smile
+    "I could see her expression visibly soften at my apology."
+    "I relaxed a bit. It's hard for me to be put on the spot like that... I'm just not used to the attention."
+    "I scratched at my scar."
+
+    nvl clear
+    show kitsune normal
+    show stray normal
+
+    k "Ah- your scar! Does it still hurt? Have you been taking care of it?"
+
+    show stray blush
+
+    s "*chuckles* Yeah, yeah."
+
+    show kitsune angry
+
+    k "HEY, I'm serious! You should remember to use that moisturizer every day, and-"
+
+    show stray embarrassed
+
+    s "Thanks, Mom."
+    k "*huffs*"
+    s "Hey, I mean... it's not like there's all that much left on my face, anyway."
+    s "Why bother, you know? Who would even find this mess attractive?"
+
+    show kitsune smile
+
+    k "You {i}would{/i} say that, jeez."
+
+    show kitsune baited
+
+    "Kitsune quickly turned her head away, embarrassed. {i}Maybe I could drag this out a bit more,{/i} I thought to myself, grinning."
+
+    nvl clear
+
+    show stray smile
+
+    s "But if I knew a certain {i}someone{/i} who did... I certainly wouldn't mind hearing them say so?"
+    k "Sh- shut up."
+
+    show stray normal
+
+    s "Haha. Anyway, how are you doing? I missed hearing your voice."
+
+    show kitsune talk
+
+    k "Mmmm... well enough, I guess? I've been monitoring your area, and the others'."
+    k "So far so good, minus the little hiccup I mentioned to you. I agree with Ohms' decision about putting out a public radio frequency for survivors."
+
+    show stray frown
+
+    "I nodded gravely, wondering if that would have saved the group I'd seen earlier today."
+
+    nvl clear
+    show kitsune normal
+
+    k "Hey, look. It's not your fault..."
+    s "Mm..."
+
+    "I blinked, fully aware that Kitsune had just read my mind."
+
+    nvl clear
+
+    s "I know, but..."
+
+    show kitsune smug
+
+    k "No buts! I'll put out that signal ASAP, okay?"
+
+    show stray talk
+
+    s "Yeah, okay."
+
+    show stray smile
+
+    stop music fadeout 2.0
+
+    "I smiled, knowing that she'd always get fired-up when I was involved... even in spite of her normally meek personality."
+    "I caught a glimpse of her grin, though and prepared myself for the worst."
+
+    nvl clear
+
+    play music "bgm/waiting.mp3"
+
+    show kitsune smug
+
+    k "You're looking good in your fatigues, though... that sort of stuff is my favorite~"
+
+    show stray frown
+
+    s "Ugh."
+
+    "Fortunately, I'd already changed out of most of my gear."
+
+    show kitsune baited
+
+    "Kitsune was... a bit of a military otaku."
+    "Even though she couldn't shoot for shit, she still knew quite a bit about the technology."
+
+    show kitsune normal
+
+    k "You're still using the M-40, right? Standard military-issue?"
+    k "Well, I suppose that's for the best... it's the easiest to get bullets for, since we still get them dropped in from base..."
+
+    "I frowned, knowing that she was going to burst into some long-winded explanation about a feature on my gun that I knew next to nothing about."
+    "I knew how to shoot and maintain my weapons, as well as how to assess when and when not to draw. That was enough for me." 
+    "It probably sounds like torture to someone who's never seriously held a gun in her life."
+
+    nvl clear
+
+    "I appreciated the wealth of knowledge when I actually had questions, but this was a conversation for another time."
+    "I cut her off with a sharp look."
+
+    nvl clear
+
+    show kitsune baited
+
+    k "A-anyway. Other than that, you know I've been just playing a bunch of net and mobile games, but I don't want to bore a dinosaur like you with the small stuff."
+
+    show stray talk
     
+
+    s "Hey, whoa, now. Not {i}everything{/i} I play is old-school. Don't tell me you consider Wii games retro."
+
+    show kitsune normal
+
+    k "..."
+
+    show kitsune baited
+
+    k "..."
+
+    show stray frown
+
+    s "{i}GOD.{/i}"
+
+    show kitsune smile
+
+    k "I'm joking! Had you going there, didn't I. I owned a Wii, too. Still a PS3 lifer, I'm sorry to say."
+
+    show stray smile
+
+    s "It {i}did{/i} have some kick-ass RPGs."
+    k "I'm glad we see eye to eye."
+
+    show kitsune normal
+
+    k "But I remember when you had me back at base, playing those old SNES and PS2 games. Gotta say, they still hold up."
+
+    show stray talk
+
+    s "Just wait until you've played the classics."
+    k "Look, I've got this thing called an 'emulator', and..."
+
+    $ renpy.pause(0.5)
+
+    show stray smile
+
+    $ renpy.pause(0.5)
+    show kitsune angry
+
+    k "DON'T YOU SCOFF."
+    s "Well, as long as you're playing them, I guess I can't {i}really{/i} complain..."
+
+    show kitsune normal
+
+    k "Where you find the time to go digging through abandoned game stores and basements is beyond me."
+
+    show stray normal
+
+    s "It passes the time. Plus, I get a kick out of continuing from old save files. It feels like I'm helping the previous owners move on..."
+    s "Especially if they've saved before a boss in the worst possible spots."
+
+    show kitsune smile
+
+    k "I hear you. One time, I passed by an actual arcade machine. It reminded me of you."
+
+    show stray talk
+
+    s "Really? Did you take a picture?"
+    k "Yeah... but don't ask me where I put it."
+
+    show stray frown
+
+    s "Figures."
+
+    show stray talk
+
+    k "But... hey?"
+
+    show stray normal
+
+    s "Hmm?"
+
+    show kitsune baited
+
+    k "Are you... really doing okay?"
+
+    show stray smile
+
+    s "Heh. I remember when you were so jumpy and nervous around me. Where does the time go?"
+
+    show kitsune smile
+
+    k "Hmph. Don't try to dodge the question, you know I'll keep pestering you."
+
+    show stray talk
+
+    s "Alright, alright. You caught me. {i}I'm okay.{/i} That better?"
+
+    show kitsune talk
+
+    k "Better."
+
+    show stray normal
+
+    s "Hey..."
+
+    show kitsune smug
+
+    k "Hmm?"
+
+    show stray blush
+
+    s "Thanks. I know I can be really difficult, but... talking through this really does make me feel a lot better."
+
+    show kitsune baited
+
+    "She looked away nervously, but nodded in agreement, making a small noise of affirmation."
+
+    s "I know I'm not the most sensitive person in the world, but... I'm here for you, too. Okay?"
+
+    k "I know... you big dummy."
+
+    show stray smile
+
+    s "Nice."
+    s "I'm gonna get going. I have to finish up some stuff... catch you around?"
+
+    k "Yeah."
+
+    show kitsune smile
+
+    k "Catch you around."
+
+    show stray talk
+
+    "I opened my mouth to say something more..."
+
+    show stray smile
+
+    "But we both paused, our smiles softening as I ended the call."
+
+    stop music fadeout 2.0
+
+    hide kitsune
+
+    nvl clear
+
+    $ renpy.pause(1.0)
+
+    show smartphone lock
+
+    $ renpy.pause(1.0)
+
+    play music "bgm/main stay.mp3"
+
+    hide smartphone
+
+    show stray at center
+    with move
+
+    "After I hung up, I took out an old photo."
+    "A close buddy of mine took a candid shot of me and Kitsune, and gave it to me as a birthday present."
+
+    hide stray
+
+    show bg together
+    with Fade(0.5,0.5,0.5)
+
+    nvl clear
+
+    "I knew Kitsune would roll her eyes at how old-school I was by keeping a physical photo around. Nevertheless, I was still really attached to it."
+    "It really summed up the two of us: our personalities, that is."
+    "Me, looking off into the distance both surly and embarrassed, face full of bandages fresh from surgery..."
+    "And Kitsune, holding onto me, in a comforting but forceful grip."
+
+    nvl clear
+
+    "Despite the fact that we were cities apart, we could still maintain that same connection, thanks to technology."
+    "She's here for me."
+    "I'm here for her."
+
+    nvl clear
+
+    "I smiled, placing the picture snugly back into my chest pocket."
+    "I went back outside onto the rooftop. I should finish what I started."
+    "Time to take on another day."
+
+    nvl clear
+
+    stop music fadeout 1.0
+    $ renpy.pause(1.0)
+
+
+    jump creditroll    
     
-label continues:
+label creditroll:
+    play music "bgm/Catwn_theme.mp3"
+    show bg credits
+    with Fade(0.5,1.0,0.5)
+
+    $ renpy.pause()
+
+    show bg black
+    with Fade(0.5,1.0,0.5)
+
+    $ renpy.pause(1.0)
     return 

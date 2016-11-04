@@ -2,8 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1376: Line is indented, but the preceding show screen statement statement does not expect a block. Please check this line's indentation.
-    $ renpy.pause()
+File "game/script.rpy", line 960: expected statement.
+    behind stray
     ^
 
 Ren'Py Version: Ren'Py 6.99.11.1749

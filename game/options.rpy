@@ -23,20 +23,20 @@ define gui.show_name = False
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "0.1"
 
 
 ## Text that is placed on the game's about screen. To insert a blank line
 ## between paragraphs, write \n\n.
 
-define gui.about = _("A Cat With No Tail\n\nA Yuri Game Jam 2016 Project \n\nMusic, Art, Writing - @chamotea\n\nProgramming, UI - @hacaplus \n\n")
+define gui.about = _("A Cat With No Tail\n\nA Yuri Game Jam 2016 Project \n\nMusic, Art, Writing - chamotea\n\nProgramming, UI - haca\n\nBG Artist - Lucky\n\nEditor - Shadocchi")
 
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "ACWNT"
+define build.name = "a_cat_with_no_tail"
 
 
 ## Sounds and music ############################################################
@@ -60,7 +60,7 @@ define config.has_voice = False
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "bgm/Catwn_theme.mp3"
 
 
 ## Transitions #################################################################
