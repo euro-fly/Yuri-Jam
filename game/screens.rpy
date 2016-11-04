@@ -1502,10 +1502,16 @@ init:
         xalign 1
         yalign 0
 
+    style phone_message_who_other is phone_message:
+        color "#000000"
+        size 20
+        bold True 
+
 
     style phone_message_who is phone_message:
-        color "#ecf0f1"
-        size 18
+        color "#ffffff"
+        size 20
+        bold True 
 
     style phone_message_what_other is phone_message:
         color "#000000"
@@ -1535,6 +1541,10 @@ screen phone_message_other(who, what):
                 style "phone_message_contents"
                 if who != "":
                     add "images/avi/" + who.lower() + "_icon.png"
+                if who == "Eng":
+                    text "Engrave" style "phone_message_who_other"
+                else:
+                    text who style "phone_message_who_other"
                 text what style "phone_message_what_other"
 
 screen phone_sticker_other(who, what):
@@ -1548,6 +1558,10 @@ screen phone_sticker_other(who, what):
                 style "phone_message_contents"
                 if who != "":
                     add "images/avi/" + who.lower() + "_icon.png"
+                if who == "Eng":
+                    text "Engrave" style "phone_message_who_other"
+                else:
+                    text who style "phone_message_who_other"
                 if what != "":
                     add "images/stickers/" + what + ".png"
 
@@ -1565,6 +1579,7 @@ screen phone_sticker_me(what):
             vbox:
                 style "phone_message_contents"
                 add "images/avi/stray_icon.png"
+                text "Stray" style "phone_message_who"
                 if what != "":
                     add "images/stickers/" + what + ".png"
 
@@ -1595,6 +1610,7 @@ screen phone_message_me(what):
             vbox:
                 style "phone_message_contents"
                 add "images/avi/stray_icon.png"
+                text "Stray" style "phone_message_who"
                 text what style "phone_message_what_me"
 
 
